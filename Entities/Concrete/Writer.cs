@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Entities.Abstract;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Writer
+    public class Writer : IEntity
     {
         [Key]
         public int WriterId { get; set; }

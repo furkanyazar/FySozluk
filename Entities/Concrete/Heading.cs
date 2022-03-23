@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Entities.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Heading
+    public class Heading : IEntity
     {
         [Key]
         public int HeadingId { get; set; }

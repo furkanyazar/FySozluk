@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Entities.Abstract;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Content
+    public class Content : IEntity
     {
         [Key]
         public int ContentId { get; set; }

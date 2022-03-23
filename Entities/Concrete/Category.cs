@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Entities.Abstract;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Category
+    public class Category : IEntity
     {
         [Key]
         public int CategoryId { get; set; }

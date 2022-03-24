@@ -1,15 +1,13 @@
 ﻿using Business.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using DataAccess.EntityFramework;
+using Entities.Concrete;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
 {
     public class CategoryController : Controller
     {
-        private CategoryManager manager = new CategoryManager();
+        private CategoryManager manager = new CategoryManager(new EfCategoryDal());
 
         // GET: Category
         public ActionResult Index()
@@ -22,6 +20,19 @@ namespace WebApp.Controllers
             var result = manager.GetAll();
 
             return View(result);
+        }
+
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            manager.Add(category);
+            return RedirectToAction("GetCategories");
         }
     }
 }

@@ -58,6 +58,10 @@
     <Compile Include="Concrete\Repositories\Repository.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Migrations\202203251649567_mig_writer_update.cs" />
+    <Compile Include="Migrations\202203251649567_mig_writer_update.designer.cs">
+      <DependentUpon>202203251649567_mig_writer_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,7 +75,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202203251649567_mig_writer_update.resx">
+      <DependentUpon>202203251649567_mig_writer_update.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

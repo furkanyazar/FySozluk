@@ -18,10 +18,13 @@ namespace Entities.Concrete
         [StringLength(100)]
         public string WriterImageUrl { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
+        public string WriterAbout { get; set; }
+
+        [StringLength(200)]
         public string WriterEmail { get; set; }
 
-        [StringLength(20)]
+        [StringLength(200)]
         public string WriterPassword { get; set; }
 
         public ICollection<Heading> Headings { get; set; }

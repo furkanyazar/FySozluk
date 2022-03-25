@@ -1,15 +1,17 @@
 ﻿@model Entities.Concrete.Writer
 
 @{
-    ViewBag.Title = "AddWriter";
+    ViewBag.Title = "UpdateWriter";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Yeni Yazar Ekle</h1>
-<br />
-@using (Html.BeginForm("AddWriter", "AdminWriter", FormMethod.Post))
+<h2>Yazar Güncelle</h2>
+@using (Html.BeginForm("UpdateWriter", "AdminWriter", FormMethod.Post))
 {
     <div class="form-group">
+        @Html.Label("ID")
+        @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
+        <br />
         @Html.Label("Ad")
         @Html.TextBoxFor(x => x.WriterFirstName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterFirstName)
@@ -23,7 +25,7 @@
         @Html.ValidationMessageFor(x => x.WriterEmail)
         <br />
         @Html.Label("Şifre")
-        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control" })
+        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control", @placeholder = "Değiştirmek için doldurunuz" })
         @Html.ValidationMessageFor(x => x.WriterPassword)
         <br />
         @Html.Label("Hakkında")

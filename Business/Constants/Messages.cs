@@ -8,6 +8,7 @@
         public static string CategoryDescriptionNotEmpty = "Kategori açıklaması boş bırakılamaz";
 
         public static string WriterEmailNotEmpty = "E-posta boş bırakılamaz";
+        public static string WriterEmailMaximumLength = "E-posta en fazla 200 karakterden oluşabilir";
         public static string WriterEmailEmailAddress = "Geçersiz e-posta adresi";
         public static string WriterFirstNameNotEmpty = "Ad boş bırakılamaz";
         public static string WriterFirstNameMinimumLength = "Ad en az 2 karakterden oluşmalı";
@@ -19,5 +20,6 @@
         public static string WriterPasswordMinimumLength = "Şifre en az 8 karakterden oluşmalı";
         public static string WriterPasswordMaximumLength = "Şifre en fazla 50 karakterden oluşabilir";
         public static string WriterAboutMaximumLength = "Hakkında en fazla 100 karakterden oluşabilir";
+        public static string WriterTitleMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
     }
 }

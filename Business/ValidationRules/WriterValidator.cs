@@ -9,6 +9,7 @@ namespace Business.ValidationRules
         public WriterValidator()
         {
             RuleFor(x => x.WriterEmail).NotEmpty().WithMessage(Messages.WriterEmailNotEmpty);
+            RuleFor(x => x.WriterEmail).MaximumLength(200).WithMessage(Messages.WriterEmailMaximumLength);
             RuleFor(x => x.WriterEmail).EmailAddress().WithMessage(Messages.WriterEmailEmailAddress);
             RuleFor(x => x.WriterFirstName).NotEmpty().WithMessage(Messages.WriterFirstNameNotEmpty);
             RuleFor(x => x.WriterFirstName).MinimumLength(2).WithMessage(Messages.WriterFirstNameMinimumLength);
@@ -20,6 +21,7 @@ namespace Business.ValidationRules
             RuleFor(x => x.WriterPassword).MinimumLength(8).WithMessage(Messages.WriterPasswordMinimumLength);
             RuleFor(x => x.WriterPassword).MaximumLength(50).WithMessage(Messages.WriterPasswordMaximumLength);
             RuleFor(x => x.WriterAbout).MaximumLength(100).WithMessage(Messages.WriterAboutMaximumLength);
+            RuleFor(x => x.WriterTitle).MaximumLength(50).WithMessage(Messages.WriterTitleMaximumLength);
         }
     }
 }

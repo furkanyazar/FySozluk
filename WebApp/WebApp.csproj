@@ -2269,11 +2269,11 @@
     <Content Include="Views\AdminCategory\UpdateCategory.cshtml" />
     <Content Include="Views\AdminWriter\Index.cshtml" />
     <Content Include="Views\AdminWriter\AddWriter.cshtml" />
+    <Content Include="Views\AdminWriter\UpdateWriter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Writer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

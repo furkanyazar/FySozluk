@@ -21,6 +21,9 @@ namespace Entities.Concrete
         [StringLength(100)]
         public string WriterAbout { get; set; }
 
+        [StringLength(50)]
+        public string WriterTitle { get; set; }
+
         [StringLength(200)]
         public string WriterEmail { get; set; }
 

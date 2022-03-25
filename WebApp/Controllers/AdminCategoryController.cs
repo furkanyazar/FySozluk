@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
@@ -9,12 +10,12 @@ namespace WebApp.Controllers
 {
     public class AdminCategoryController : Controller
     {
-        private CategoryManager manager = new CategoryManager(new EfCategoryDal());
+        private ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
 
         // GET: AdminCategory
         public ActionResult Index()
         {
-            var result = manager.GetAll();
+            var result = _categoryService.GetAll();
 
             return View(result);
         }
@@ -33,7 +34,7 @@ namespace WebApp.Controllers
 
             if (result.IsValid)
             {
-                manager.Add(category);
+                _categoryService.Add(category);
                 return RedirectToAction("Index");
             }
 
@@ -47,8 +48,8 @@ namespace WebApp.Controllers
 
         public ActionResult DeleteCategory(int id)
         {
-            var result = manager.GetById(id);
-            manager.Delete(result);
+            var result = _categoryService.GetById(id);
+            _categoryService.Delete(result);
 
             return RedirectToAction("Index");
         }
@@ -56,7 +57,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult UpdateCategory(int id)
         {
-            var result = manager.GetById(id);
+            var result = _categoryService.GetById(id);
 
             return View(result);
         }
@@ -69,7 +70,7 @@ namespace WebApp.Controllers
 
             if (result.IsValid)
             {
-                manager.Update(category);
+                _categoryService.Update(category);
                 return RedirectToAction("Index");
             }
 

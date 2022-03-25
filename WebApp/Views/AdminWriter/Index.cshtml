@@ -1,0 +1,25 @@
+﻿@using Entities.Concrete
+@model List<Writer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Yazar Adı</th>
+        <th>Yazar Soyadı</th>
+        <th>E-posta</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.WriterId</th>
+            <td>@item.WriterFirstName</td>
+            <td>@item.WriterLastName</td>
+            <td>@item.WriterEmail</td>
+        </tr>
+    }
+</table>

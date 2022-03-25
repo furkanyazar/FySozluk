@@ -1,21 +1,36 @@
-﻿@{
+﻿@using Entities.Concrete
+@model List<Category>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <table class="table table-hover">
     <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Kategori Adı</th>
         <th>Açıklama</th>
         <th>Durum</th>
+        <th>Başlıklar</th>
         <th>Düzenle</th>
+        <th>Sil</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Eğitim</td>
-        <td>Burası eğitim kategorisidir</td>
-        <td>True</td>
-        <td><button class="btn btn-warning">Düzenle</button></td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.CategoryId</th>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td>@item.CategoryStatus</td>
+            <td><a href="#" class="btn btn-primary">Başlıklar</a></td>
+            <td><a href="/AdminCategory/UpdateCategory/@item.CategoryId" class="btn btn-warning">Düzenle</a></td>
+            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
 </table>
+<div>
+    <a href="/AdminCategory/AddCategory" class="btn btn-success">Yeni Kategori</a>
+    @*<button class="btn btn-primary">Kategori Listesi</button>
+        <button class="btn btn-info">Kategori Açıklamaları</button>*@
+</div>

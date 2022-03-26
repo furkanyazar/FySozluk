@@ -21,5 +21,15 @@
         public static string WriterPasswordMaximumLength = "Şifre en fazla 50 karakterden oluşabilir";
         public static string WriterAboutMaximumLength = "Hakkında en fazla 100 karakterden oluşabilir";
         public static string WriterTitleMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
+
+        public static string CategoryIdNotEmpty = "Kategori boş bırakılamaz";
+        public static string CategoryIdGreaterThan = "Geçersiz kategori";
+        public static string WriterIdNotEmpty = "Yazar boş bırakılamaz";
+        public static string WriterIdGreaterThan = "Geçersiz yazar";
+        public static string HeadingNameNotEmpty = "Başlık boş bırakılamaz";
+        public static string HeadingNameMinimumLength = "Başlık en az 3 karakterden oluşmalı";
+        public static string HeadingNameMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
+        public static string HeadingDateNotEmpty = "Tarih boş bırakılamaz";
+        public static string HeadingDateEqual = "Tarih bugüne eşit olmalıdır";
     }
 }

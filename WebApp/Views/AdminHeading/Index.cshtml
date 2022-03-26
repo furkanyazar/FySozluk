@@ -11,6 +11,7 @@
         <th>#</th>
         <th>Başlık Adı</th>
         <th>Kategori</th>
+        <th>Yazar</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -18,6 +19,10 @@
             <th>@item.HeadingId</th>
             <td>@item.HeadingName</td>
             <td>@item.Category.CategoryName</td>
+            <td>@item.Writer.WriterFirstName @item.Writer.WriterLastName</td>
         </tr>
     }
 </table>
+<div>
+    <a href="/AdminHeading/AddHeading" class="btn btn-success">Yeni Başlık</a>
+</div>

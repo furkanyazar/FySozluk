@@ -58,7 +58,9 @@ namespace WebApp.Controllers
         public ActionResult UpdateWriter(Writer writer)
         {
             if (writer.WriterPassword is null)
+            {
                 writer.WriterPassword = _writerService.GetById(writer.WriterId).WriterPassword;
+            }
 
             WriterValidator validator = new WriterValidator();
             ValidationResult result = validator.Validate(writer);

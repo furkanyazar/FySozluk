@@ -5,6 +5,11 @@ namespace DataAccess.Concrete
 {
     public class Context : DbContext
     {
+        public Context()
+        {
+            Configuration.LazyLoadingEnabled = false;
+        }
+
         public DbSet<About> Abouts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }

@@ -7,9 +7,9 @@ namespace Business.Abstract
     {
         List<Writer> GetAll();
 
-        void Add(Writer writer);
-
         Writer GetById(int id);
+
+        void Add(Writer writer);
 
         void Delete(Writer writer);
 

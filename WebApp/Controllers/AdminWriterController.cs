@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
@@ -16,6 +17,14 @@ namespace WebApp.Controllers
         public ActionResult Index()
         {
             var result = _writerService.GetAll();
+
+            foreach (var item in result)
+            {
+                if (item.WriterImageUrl is null)
+                {
+                    item.WriterImageUrl = Defaults.DEFAULT_WRITER_IMAGE_URL;
+                }
+            }
 
             return View(result);
         }

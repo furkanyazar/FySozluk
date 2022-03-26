@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
@@ -32,6 +33,11 @@ namespace WebApp.Controllers
                 if (item.Writer is null)
                 {
                     item.Writer = _writerService.GetById(item.WriterId);
+                }
+
+                if (item.Writer.WriterImageUrl is null)
+                {
+                    item.Writer.WriterImageUrl = Defaults.DEFAULT_WRITER_IMAGE_URL;
                 }
             }
 

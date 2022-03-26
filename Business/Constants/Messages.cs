@@ -21,6 +21,7 @@
         public static string WriterPasswordMaximumLength = "Şifre en fazla 50 karakterden oluşabilir";
         public static string WriterAboutMaximumLength = "Hakkında en fazla 100 karakterden oluşabilir";
         public static string WriterTitleMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
+        public static string WriterImageUrlMaximumLength = "Fotoğraf yolu en fazla 250 karakterden oluşabilir";
 
         public static string CategoryIdNotEmpty = "Kategori boş bırakılamaz";
         public static string CategoryIdGreaterThan = "Geçersiz kategori";

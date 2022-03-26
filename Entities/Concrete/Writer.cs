@@ -15,7 +15,7 @@ namespace Entities.Concrete
         [StringLength(50)]
         public string WriterLastName { get; set; }
 
-        [StringLength(100)]
+        [StringLength(250)]
         public string WriterImageUrl { get; set; }
 
         [StringLength(100)]

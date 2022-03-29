@@ -3,6 +3,7 @@ using Business.Concrete;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -16,7 +17,7 @@ namespace WebApp.Controllers
         // GET: AdminContent
         public ActionResult Index()
         {
-            var result = _contentService.GetAll();
+            var result = _contentService.GetAll().OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 
@@ -25,7 +26,16 @@ namespace WebApp.Controllers
 
         public ActionResult ContentsByHeading(int id)
         {
-            var result = _contentService.GetAllByHeadingId(id);
+            var result = _contentService.GetAllByHeadingId(id).OrderByDescending(x => x.ContentDate).ToList();
+
+            GetForeignValues(result);
+
+            return View(result);
+        }
+
+        public ActionResult ContentsByWriter(int id)
+        {
+            var result = _contentService.GetAllByWriterId(id).OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 

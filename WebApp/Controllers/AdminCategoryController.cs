@@ -46,14 +46,6 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public ActionResult DeleteCategory(int id)
-        {
-            var result = _categoryService.GetById(id);
-            _categoryService.Delete(result);
-
-            return RedirectToAction("Index");
-        }
-
         [HttpGet]
         public ActionResult UpdateCategory(int id)
         {
@@ -80,6 +72,15 @@ namespace WebApp.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var result = _categoryService.GetById(id);
+            result.CategoryStatus = result.CategoryStatus ? false : true;
+            _categoryService.Update(result);
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -21,7 +21,7 @@ namespace WebApp.Controllers
         // GET: AdminHeading
         public ActionResult Index()
         {
-            var result = _headingService.GetAll();
+            var result = _headingService.GetAll().OrderByDescending(x => x.HeadingDate).ToList();
 
             GetForeignValues(result);
 
@@ -31,13 +31,6 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> categories = (from x in _categoryService.GetAll()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.CategoryName,
-                                                   Value = x.CategoryId.ToString()
-                                               }).ToList();
-
             List<SelectListItem> writers = (from x in _writerService.GetAll()
                                             select new SelectListItem
                                             {
@@ -45,7 +38,7 @@ namespace WebApp.Controllers
                                                 Value = x.WriterId.ToString()
                                             }).ToList();
 
-            ViewBag.categories = categories;
+            ViewBag.categories = GetCategoriesSelectListItems();
             ViewBag.writers = writers;
 
             return View();
@@ -54,7 +47,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddHeading(Heading heading)
         {
-            heading.HeadingDate = DateTime.Today;
+            heading.HeadingDate = DateTime.Now;
 
             HeadingValidator validator = new HeadingValidator();
             ValidationResult result = validator.Validate(heading);
@@ -73,9 +66,57 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult UpdateHeading(int id)
+        {
+            var result = _headingService.GetById(id);
+
+            if (result.Category is null)
+            {
+                result.Category = _categoryService.GetById(result.CategoryId);
+            }
+
+            ViewBag.categories = GetCategoriesSelectListItems();
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateHeading(Heading heading)
+        {
+            var oldHeading = _headingService.GetById(heading.HeadingId);
+            heading.HeadingDate = oldHeading.HeadingDate;
+            heading.WriterId = oldHeading.WriterId;
+
+            HeadingValidator validator = new HeadingValidator();
+            ValidationResult result = validator.Validate(heading);
+
+            if (result.IsValid)
+            {
+                _headingService.Update(heading);
+                return RedirectToAction("Index");
+            }
+
+            foreach (var item in result.Errors)
+            {
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            }
+
+            return View();
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var result = _headingService.GetById(id);
+            result.HeadingStatus = result.HeadingStatus ? false : true;
+            _headingService.Update(result);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult HeadingsByCategory(int id)
         {
-            var result = _headingService.GetAllByCategoryId(id);
+            var result = _headingService.GetAllByCategoryId(id).OrderByDescending(x => x.HeadingDate).ToList();
 
             GetForeignValues(result);
 
@@ -84,7 +125,7 @@ namespace WebApp.Controllers
 
         public ActionResult HeadingsByWriter(int id)
         {
-            var result = _headingService.GetAllByWriterId(id);
+            var result = _headingService.GetAllByWriterId(id).OrderByDescending(x => x.HeadingDate).ToList();
 
             GetForeignValues(result);
 
@@ -110,6 +151,16 @@ namespace WebApp.Controllers
                     item.Writer.WriterImageUrl = Defaults.DEFAULT_WRITER_IMAGE_URL;
                 }
             }
+        }
+
+        public ICollection<SelectListItem> GetCategoriesSelectListItems()
+        {
+            return (from x in _categoryService.GetAll()
+                    select new SelectListItem
+                    {
+                        Text = x.CategoryName,
+                        Value = x.CategoryId.ToString()
+                    }).ToList();
         }
     }
 }

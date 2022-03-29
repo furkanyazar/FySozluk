@@ -31,7 +31,7 @@
         public static string HeadingNameMinimumLength = "Başlık en az 3 karakterden oluşmalı";
         public static string HeadingNameMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
         public static string HeadingDateNotEmpty = "Tarih boş bırakılamaz";
-        public static string HeadingDateEqual = "Tarih bugüne eşit olmalıdır";
+        public static string HeadingDateGreaterThan = "Tarih geçersiz";
 
         public static string HeadingIdNotEmpty = "Başlık boş bırakılamaz";
         public static string HeadingIdGreaterThan = "Geçersiz başlık";

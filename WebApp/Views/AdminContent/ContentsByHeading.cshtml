@@ -35,7 +35,7 @@
                                             <div class="timeline-item">
                                                 @*<span class="time"><i class="far fa-clock"></i> 27 mins ago</span>*@
 
-                                                <h3 class="timeline-header"><a href="#">@item.Writer.WriterFirstName @item.Writer.WriterLastName</a> @item.Heading.HeadingName</h3>
+                                                <h3 class="timeline-header">Written by <a href="/AdminContent/ContentsByWriter/@item.WriterId">@item.Writer.WriterFirstName @item.Writer.WriterLastName</a> to <a href="/AdminContent/ContentsByHeading/@item.HeadingId">@item.Heading.HeadingName</a></h3>
 
                                                 <div class="timeline-body">
                                                     @item.ContentText

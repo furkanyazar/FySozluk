@@ -33,7 +33,7 @@ to get the desired effect
         <!-- Navbar -->
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed">
             <!-- Brand Logo -->
             <a href="/AdminCategory" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -56,7 +56,9 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminCategory")) {
+                                Write("menu-open");
+                        }}">
                             <a href="/AdminCategory" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -64,7 +66,9 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading")) {
+                                Write("menu-open");
+                        }}">
                             <a href="/AdminHeading" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -72,7 +76,9 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminWriter")) {
+                                Write("menu-open");
+                        }}">
                             <a href="/AdminWriter" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
@@ -125,7 +131,9 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminContent")) {
+                                Write("menu-open");
+                        }}">
                             <a href="/AdminContent" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>

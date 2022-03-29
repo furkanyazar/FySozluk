@@ -6,10 +6,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@{
-    string color = "";
-}
-
 <!-- Default box -->
 <div class="card">
     <div class="card-body p-0">
@@ -35,14 +31,6 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    if (item.CategoryStatus)
-                    {
-                        color = "badge-success";
-                    }
-                    else
-                    {
-                        color = "badge-danger";
-                    }
                     <tr>
                         <td>
                             @item.CategoryId
@@ -60,7 +48,25 @@
                             </ul>
                         </td>
                         <td class="project-state">
-                            <span class="badge @color">@item.CategoryStatus</span>
+                            <span class="badge @{ switch (item.CategoryStatus)
+                                {
+                                    case true:
+                                        Write("badge-success");
+                                        break;
+                                    default:
+                                        Write("badge-danger");
+                                        break;
+                                }}">
+                                @{ switch (item.CategoryStatus)
+                                    {
+                                        case true:
+                                            Write("Aktif");
+                                            break;
+                                        default:
+                                            Write("Pasif");
+                                            break;
+                                    }}
+                            </span>
                         </td>
 
                         <td class="project-actions text-right">
@@ -91,3 +97,4 @@
 <div>
     <a href="/AdminCategory/AddCategory" class="btn btn-success">Yeni Kategori</a>
 </div>
+<br />

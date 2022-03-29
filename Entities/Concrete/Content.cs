@@ -14,7 +14,7 @@ namespace Entities.Concrete
 
         public DateTime ContentDate { get; set; }
 
-        public bool ContentStatus { get; set; }
+        public bool ContentStatus { get; set; } = true;
 
         public int HeadingId { get; set; }
         public virtual Heading Heading { get; set; }

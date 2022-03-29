@@ -1,8 +1,8 @@
 ﻿@using Entities.Concrete
-@model List<Category>
+@model List<Heading>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "HeadingsByCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -20,13 +20,13 @@
                         #
                     </th>
                     <th style="width: 20%">
-                        Kategori Adı
+                        Başlık
                     </th>
                     <th style="width: 30%">
-                        Açıklama
+                        Yazar
                     </th>
                     <th style="width: 8%" class="text-center">
-                        Durum
+                        Kategori
                     </th>
                     <th style="width: 20%">
                     </th>
@@ -35,46 +35,69 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    if (item.CategoryStatus)
+                    if (item.Category.CategoryName == "Eğitim")
                     {
-                        color = "badge-success";
+                        color = "badge badge-primary";
+                    }
+                    else if (item.Category.CategoryName == "Tiyatro")
+                    {
+                        color = "badge badge-success";
+                    }
+                    else if (item.Category.CategoryName == "Kitap")
+                    {
+                        color = "badge badge-info";
+                    }
+                    else if (item.Category.CategoryName == "Spor")
+                    {
+                        color = "badge badge-warning";
+                    }
+                    else if (item.Category.CategoryName == "Film")
+                    {
+                        color = "badge badge-danger";
+                    }
+                    else if (item.Category.CategoryName == "Dizi")
+                    {
+                        color = "badge badge-secondary";
                     }
                     else
                     {
-                        color = "badge-danger";
+                        color = "badge badge-pill";
                     }
                     <tr>
                         <td>
-                            @item.CategoryId
+                            @item.HeadingId
                         </td>
                         <td>
                             <a>
-                                @item.CategoryName
+                                @item.HeadingName
                             </a>
+                            <br />
+                            <small>
+                                @item.HeadingDate.ToString("dd.MM.yyyy") tarihinde oluşturuldu
+                            </small>
                         </td>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    @item.CategoryDescription
+                                    <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImageUrl"> @item.Writer.WriterFirstName @item.Writer.WriterLastName
                                 </li>
                             </ul>
                         </td>
                         <td class="project-state">
-                            <span class="badge @color">@item.CategoryStatus</span>
+                            <span class="@color">@item.Category.CategoryName</span>
                         </td>
-
                         <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="/AdminHeading/HeadingsByCategory/@item.CategoryId">
+                            <a class="btn btn-primary btn-sm" href="/AdminContent/ContentsByHeading/@item.HeadingId">
                                 <i class="fas fa-folder">
                                 </i>
-                                Başlıklar
+                                Yazılar
                             </a>
-                            <a class="btn btn-info btn-sm" href="/AdminCategory/UpdateCategory/@item.CategoryId">
+                            <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Düzenle
                             </a>
-                            <a class="btn btn-danger btn-sm" href="/AdminCategory/DeleteCategory/@item.CategoryId">
+                            <a class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                                 Sil
@@ -89,5 +112,5 @@
 </div>
 <!-- /.card -->
 <div>
-    <a href="/AdminCategory/AddCategory" class="btn btn-success">Yeni Kategori</a>
+    <a href="/AdminHeading/AddHeading" class="btn btn-success">Yeni Başlık</a>
 </div>

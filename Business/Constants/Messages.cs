@@ -32,5 +32,13 @@
         public static string HeadingNameMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
         public static string HeadingDateNotEmpty = "Tarih boş bırakılamaz";
         public static string HeadingDateEqual = "Tarih bugüne eşit olmalıdır";
+
+        public static string HeadingIdNotEmpty = "Başlık boş bırakılamaz";
+        public static string HeadingIdGreaterThan = "Geçersiz başlık";
+        public static string ContentDateNotEmpty = "Tarih boş bırakılamaz";
+        public static string ContentDateGreaterThan = "Tarih geçersiz";
+        public static string ContentTextNotEmpty = "İçerik boş bırakılamaz";
+        public static string ContentTextMinimumLength = "İçerik en az 2 karakterden oluşmalı";
+        public static string ContentTextMaximumLength = "İçerik en fazla 1000 karakterden oluşabilir";
     }
 }

@@ -23,23 +23,7 @@ namespace WebApp.Controllers
         {
             var result = _headingService.GetAll();
 
-            foreach (var item in result)
-            {
-                if (item.Category is null)
-                {
-                    item.Category = _categoryService.GetById(item.CategoryId);
-                }
-
-                if (item.Writer is null)
-                {
-                    item.Writer = _writerService.GetById(item.WriterId);
-                }
-
-                if (item.Writer.WriterImageUrl is null)
-                {
-                    item.Writer.WriterImageUrl = Defaults.DEFAULT_WRITER_IMAGE_URL;
-                }
-            }
+            GetForeignValues(result);
 
             return View(result);
         }
@@ -87,6 +71,45 @@ namespace WebApp.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult HeadingsByCategory(int id)
+        {
+            var result = _headingService.GetAllByCategoryId(id);
+
+            GetForeignValues(result);
+
+            return View(result);
+        }
+
+        public ActionResult HeadingsByWriter(int id)
+        {
+            var result = _headingService.GetAllByWriterId(id);
+
+            GetForeignValues(result);
+
+            return View(result);
+        }
+
+        public void GetForeignValues(ICollection<Heading> result)
+        {
+            foreach (var item in result)
+            {
+                if (item.Category is null)
+                {
+                    item.Category = _categoryService.GetById(item.CategoryId);
+                }
+
+                if (item.Writer is null)
+                {
+                    item.Writer = _writerService.GetById(item.WriterId);
+                }
+
+                if (item.Writer.WriterImageUrl is null)
+                {
+                    item.Writer.WriterImageUrl = Defaults.DEFAULT_WRITER_IMAGE_URL;
+                }
+            }
         }
     }
 }

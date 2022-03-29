@@ -52,12 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\Repository.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202203251649567_mig_writer_update.cs" />
@@ -71,6 +73,10 @@
     <Compile Include="Migrations\202203261010445_mig_writer_update1.cs" />
     <Compile Include="Migrations\202203261010445_mig_writer_update1.designer.cs">
       <DependentUpon>202203261010445_mig_writer_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203290805516_mig_writer_add_status.cs" />
+    <Compile Include="Migrations\202203290805516_mig_writer_add_status.designer.cs">
+      <DependentUpon>202203290805516_mig_writer_add_status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203261010445_mig_writer_update1.resx">
       <DependentUpon>202203261010445_mig_writer_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203290805516_mig_writer_add_status.resx">
+      <DependentUpon>202203290805516_mig_writer_add_status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
-using Business.ValidationRules;
 using DataAccess.EntityFramework;
-using FluentValidation.Results;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -14,7 +13,7 @@ namespace WebApp.Controllers
         // GET: AdminContact
         public ActionResult Index()
         {
-            var result = _contactService.GetAll();
+            var result = _contactService.GetAll().OrderByDescending(x => x.ContactDate).ToList();
 
             return View(result);
         }
@@ -23,12 +22,21 @@ namespace WebApp.Controllers
         {
             var result = _contactService.GetById(id);
 
+            if (!result.ContactStatus)
+            {
+                result.ContactStatus = true;
+
+                _contactService.Update(result);
+            }
+
             return View(result);
         }
 
         public PartialViewResult ContactPartial()
         {
-            return PartialView();
+            var result = _contactService.GetAll();
+
+            return PartialView(result);
         }
     }
 }

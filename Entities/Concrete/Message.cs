@@ -22,5 +22,7 @@ namespace Entities.Concrete
         public string ReceiverEmail { get; set; }
 
         public DateTime MessageDate { get; set; } = DateTime.Now;
+
+        public bool MessageStatus { get; set; } = false;
     }
 }

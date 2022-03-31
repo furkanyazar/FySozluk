@@ -22,5 +22,7 @@ namespace Entities.Concrete
         public string ContactMessage { get; set; }
 
         public DateTime ContactDate { get; set; } = DateTime.Now;
+
+        public bool ContactStatus { get; set; } = false;
     }
 }

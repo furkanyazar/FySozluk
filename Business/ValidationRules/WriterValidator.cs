@@ -8,9 +8,9 @@ namespace Business.ValidationRules
     {
         public WriterValidator()
         {
-            RuleFor(x => x.WriterEmail).NotEmpty().WithMessage(Messages.WriterEmailNotEmpty);
-            RuleFor(x => x.WriterEmail).MaximumLength(200).WithMessage(Messages.WriterEmailMaximumLength);
-            RuleFor(x => x.WriterEmail).EmailAddress().WithMessage(Messages.WriterEmailEmailAddress);
+            RuleFor(x => x.WriterEmail).NotEmpty().WithMessage(Messages.EmailNotEmpty);
+            RuleFor(x => x.WriterEmail).MaximumLength(200).WithMessage(Messages.EmailMaximumLength);
+            RuleFor(x => x.WriterEmail).EmailAddress().WithMessage(Messages.InvalidEmailAddress);
             RuleFor(x => x.WriterFirstName).NotEmpty().WithMessage(Messages.WriterFirstNameNotEmpty);
             RuleFor(x => x.WriterFirstName).MinimumLength(2).WithMessage(Messages.WriterFirstNameMinimumLength);
             RuleFor(x => x.WriterFirstName).MaximumLength(50).WithMessage(Messages.WriterFirstNameMaximumLength);

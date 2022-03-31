@@ -16,7 +16,6 @@ namespace Business.ValidationRules
             RuleFor(x => x.HeadingName).NotEmpty().WithMessage(Messages.HeadingNameNotEmpty);
             RuleFor(x => x.HeadingName).MinimumLength(3).WithMessage(Messages.HeadingNameMinimumLength);
             RuleFor(x => x.HeadingName).MaximumLength(50).WithMessage(Messages.HeadingNameMaximumLength);
-            RuleFor(x => x.HeadingDate).NotEmpty().WithMessage(Messages.DateNotEmpty);
         }
     }
 }

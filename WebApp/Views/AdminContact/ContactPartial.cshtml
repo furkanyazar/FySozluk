@@ -1,5 +1,25 @@
-﻿<div class="col-md-3">
-    <a href="#" class="btn btn-primary btn-block mb-3">Yeni Mesaj</a>
+﻿@using Entities.Concrete
+@model List<Contact>
+
+@{
+    int count = 0;
+
+    foreach (var item in Model)
+    {
+        if (!item.ContactStatus)
+        {
+            count++;
+        }
+    }
+}
+
+<div class="col-md-3">
+    <a href="/AdminContact" class="btn btn-primary btn-block mb-3">
+        Mesajlar @if (count > 0)
+        {
+            <span class="badge float-right">@count</span>
+        }
+    </a>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Seçenekler</h3>
@@ -12,13 +32,12 @@
         <div class="card-body p-0">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-inbox"></i> Gelen Kutusu
-                        <span class="badge bg-primary float-right">12</span>
+                    <a href="/AdminMessage/Inbox" class="nav-link">
+                        <i class="fas fa-inbox"></i> Gelen Mesajlar
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/AdminMessage/Sendbox" class="nav-link">
                         <i class="far fa-envelope"></i> Gönderilen Mesajlar
                     </a>
                 </li>
@@ -30,7 +49,6 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-filter"></i> Spam
-                        <span class="badge bg-warning float-right">65</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -62,7 +80,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="far fa-circle text-warning"></i> Tanıtım
+                        <i class="far fa-circle text-warning"></i>
+                        Tanıtım
                     </a>
                 </li>
                 <li class="nav-item">

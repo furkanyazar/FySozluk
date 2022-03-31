@@ -50,8 +50,6 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddHeading(Heading heading)
         {
-            heading.HeadingDate = DateTime.Now;
-
             _validation = _validator.Validate(heading);
 
             if (_validation.IsValid)

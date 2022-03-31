@@ -20,6 +20,7 @@ namespace Business.ValidationRules
             RuleFor(x => x.ContactUserName).NotEmpty().WithMessage(Messages.ContactUserNameNotEmpty);
             RuleFor(x => x.ContactUserName).MinimumLength(2).WithMessage(Messages.ContactUserNameMinimumLength);
             RuleFor(x => x.ContactUserName).MaximumLength(50).WithMessage(Messages.ContactUserNameMaximumLength);
+            RuleFor(x => x.ContactDate).NotEmpty().WithMessage(Messages.DateNotEmpty);
         }
     }
 }

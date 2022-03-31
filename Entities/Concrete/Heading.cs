@@ -13,7 +13,7 @@ namespace Entities.Concrete
         [StringLength(50)]
         public string HeadingName { get; set; }
 
-        public DateTime HeadingDate { get; set; }
+        public DateTime HeadingDate { get; set; } = DateTime.Now;
 
         public bool HeadingStatus { get; set; } = true;
 

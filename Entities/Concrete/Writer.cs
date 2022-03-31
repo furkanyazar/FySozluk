@@ -18,16 +18,16 @@ namespace Entities.Concrete
         [StringLength(250)]
         public string WriterImageUrl { get; set; }
 
-        [StringLength(100)]
+        [StringLength(250)]
         public string WriterAbout { get; set; }
 
         [StringLength(50)]
         public string WriterTitle { get; set; }
 
-        [StringLength(200)]
+        [StringLength(50)]
         public string WriterEmail { get; set; }
 
-        [StringLength(200)]
+        [StringLength(250)]
         public string WriterPassword { get; set; }
 
         public bool WriterStatus { get; set; } = true;

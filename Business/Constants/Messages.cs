@@ -2,6 +2,8 @@
 {
     public static class Messages
     {
+        public static string DateNotEmpty = "Tarih boş bırakılamaz";
+
         public static string CategoryNameNotEmpty = "Kategori adı boş bırakılamaz";
         public static string CategoryNameMinimumLength = "Kategori adı en az 3 karakterden oluşmalı";
         public static string CategoryNameMaximumLength = "Kategori adı en fazla 20 karakterden oluşabilir";
@@ -30,13 +32,9 @@
         public static string HeadingNameNotEmpty = "Başlık boş bırakılamaz";
         public static string HeadingNameMinimumLength = "Başlık en az 3 karakterden oluşmalı";
         public static string HeadingNameMaximumLength = "Başlık en fazla 50 karakterden oluşabilir";
-        public static string HeadingDateNotEmpty = "Tarih boş bırakılamaz";
-        public static string HeadingDateGreaterThan = "Tarih geçersiz";
 
         public static string HeadingIdNotEmpty = "Başlık boş bırakılamaz";
         public static string HeadingIdGreaterThan = "Geçersiz başlık";
-        public static string ContentDateNotEmpty = "Tarih boş bırakılamaz";
-        public static string ContentDateGreaterThan = "Tarih geçersiz";
         public static string ContentTextNotEmpty = "İçerik boş bırakılamaz";
         public static string ContentTextMinimumLength = "İçerik en az 2 karakterden oluşmalı";
         public static string ContentTextMaximumLength = "İçerik en fazla 1000 karakterden oluşabilir";

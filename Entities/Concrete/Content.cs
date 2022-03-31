@@ -12,7 +12,7 @@ namespace Entities.Concrete
         [StringLength(1000)]
         public string ContentText { get; set; }
 
-        public DateTime ContentDate { get; set; }
+        public DateTime ContentDate { get; set; } = DateTime.Now;
 
         public bool ContentStatus { get; set; } = true;
 

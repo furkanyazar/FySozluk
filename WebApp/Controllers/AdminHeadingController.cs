@@ -18,6 +18,9 @@ namespace WebApp.Controllers
         private ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
 
+        private HeadingValidator _validator = new HeadingValidator();
+        private ValidationResult _validation;
+
         // GET: AdminHeading
         public ActionResult Index()
         {
@@ -49,16 +52,15 @@ namespace WebApp.Controllers
         {
             heading.HeadingDate = DateTime.Now;
 
-            HeadingValidator validator = new HeadingValidator();
-            ValidationResult result = validator.Validate(heading);
+            _validation = _validator.Validate(heading);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _headingService.Add(heading);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }
@@ -88,16 +90,15 @@ namespace WebApp.Controllers
             heading.HeadingDate = oldHeading.HeadingDate;
             heading.WriterId = oldHeading.WriterId;
 
-            HeadingValidator validator = new HeadingValidator();
-            ValidationResult result = validator.Validate(heading);
+            _validation = _validator.Validate(heading);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _headingService.Update(heading);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }

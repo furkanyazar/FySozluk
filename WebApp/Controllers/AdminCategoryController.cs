@@ -12,6 +12,9 @@ namespace WebApp.Controllers
     {
         private ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
 
+        private CategoryValidator _validator = new CategoryValidator();
+        private ValidationResult _validation;
+
         // GET: AdminCategory
         public ActionResult Index()
         {
@@ -29,16 +32,15 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            CategoryValidator validator = new CategoryValidator();
-            ValidationResult result = validator.Validate(category);
+            _validation = _validator.Validate(category);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _categoryService.Add(category);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }
@@ -57,16 +59,15 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult UpdateCategory(Category category)
         {
-            CategoryValidator validator = new CategoryValidator();
-            ValidationResult result = validator.Validate(category);
+            _validation = _validator.Validate(category);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _categoryService.Update(category);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }

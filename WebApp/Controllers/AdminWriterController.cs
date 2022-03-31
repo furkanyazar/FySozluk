@@ -13,6 +13,9 @@ namespace WebApp.Controllers
     {
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
 
+        private WriterValidator _validator = new WriterValidator();
+        private ValidationResult _validation;
+
         // GET: Writer
         public ActionResult Index()
         {
@@ -38,16 +41,15 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddWriter(Writer writer)
         {
-            WriterValidator validator = new WriterValidator();
-            ValidationResult result = validator.Validate(writer);
+            _validation = _validator.Validate(writer);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _writerService.Add(writer);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }
@@ -71,16 +73,15 @@ namespace WebApp.Controllers
                 writer.WriterPassword = _writerService.GetById(writer.WriterId).WriterPassword;
             }
 
-            WriterValidator validator = new WriterValidator();
-            ValidationResult result = validator.Validate(writer);
+            _validation = _validator.Validate(writer);
 
-            if (result.IsValid)
+            if (_validation.IsValid)
             {
                 _writerService.Update(writer);
                 return RedirectToAction("Index");
             }
 
-            foreach (var item in result.Errors)
+            foreach (var item in _validation.Errors)
             {
                 ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }

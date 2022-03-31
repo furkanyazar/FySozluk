@@ -14,10 +14,10 @@ namespace Entities.Concrete
         [StringLength(1000)]
         public string AboutDetails2 { get; set; }
 
-        [StringLength(100)]
+        [StringLength(250)]
         public string AboutImageUrl1 { get; set; }
 
-        [StringLength(100)]
+        [StringLength(250)]
         public string AboutImageUrl2 { get; set; }
     }
 }

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Concrete\Repositories\Repository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
@@ -87,6 +89,14 @@
     <Compile Include="Migrations\202203291259068_mig_add_heading_status.cs" />
     <Compile Include="Migrations\202203291259068_mig_add_heading_status.designer.cs">
       <DependentUpon>202203291259068_mig_add_heading_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203311335453_mig_update_about_and_contact.cs" />
+    <Compile Include="Migrations\202203311335453_mig_update_about_and_contact.designer.cs">
+      <DependentUpon>202203311335453_mig_update_about_and_contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203311430324_mig_add_contact_date.cs" />
+    <Compile Include="Migrations\202203311430324_mig_add_contact_date.designer.cs">
+      <DependentUpon>202203311430324_mig_add_contact_date.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203291259068_mig_add_heading_status.resx">
       <DependentUpon>202203291259068_mig_add_heading_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203311335453_mig_update_about_and_contact.resx">
+      <DependentUpon>202203311335453_mig_update_about_and_contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203311430324_mig_add_contact_date.resx">
+      <DependentUpon>202203311430324_mig_add_contact_date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

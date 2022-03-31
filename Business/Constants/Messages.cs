@@ -40,5 +40,27 @@
         public static string ContentTextNotEmpty = "İçerik boş bırakılamaz";
         public static string ContentTextMinimumLength = "İçerik en az 2 karakterden oluşmalı";
         public static string ContentTextMaximumLength = "İçerik en fazla 1000 karakterden oluşabilir";
+
+        public static string AboutDetails1NotEmpty = "Hakkımızda yazısı 1 boş bırakılamaz";
+        public static string AboutDetails1MinimumLength = "Hakkımızda yazısı 1 en az 5 karakterden oluşmalı";
+        public static string AboutDetails1MaximumLength = "Hakkımızda yazısı 1 en fazla 250 karakterden oluşabilir";
+        public static string AboutDetails2NotEmpty = "Hakkımızda yazısı 2 boş bırakılamaz";
+        public static string AboutDetails2MinimumLength = "Hakkımızda yazısı 2 en az 5 karakterden oluşmalı";
+        public static string AboutDetails2MaximumLength = "Hakkımızda yazısı 2 en fazla 250 karakterden oluşabilir";
+        public static string AboutImageUrl1MaximumLength = "Fotoğraf yolu 1 en fazla 250 karakterden oluşabilir";
+        public static string AboutImageUrl2MaximumLength = "Fotoğraf yolu 2 en fazla 250 karakterden oluşabilir";
+
+        public static string ContactMessageNotEmpty = "Mesaj boş bırakılamaz";
+        public static string ContactMessageMinimumLength = "Mesaj en az 25 karakterden oluşmalı";
+        public static string ContactMessageMaximumLength = "Mesaj en fazla 1000 karakterden oluşabilir";
+        public static string ContactSubjectNotEmpty = "Konu boş bırakılamaz";
+        public static string ContactSubjectMinimumLength = "Konu en az 3 karakterden oluşmalı";
+        public static string ContactSubjectMaximumLength = "Konu en fazla 50 karakterden oluşabilir";
+        public static string ContactUserEmailNotEmpty = "E-posta adresı boş bırakılamaz";
+        public static string ContactUserEmailMaximumLength = "E-posta adresi en fazla 50 karakterden oluşabilir";
+        public static string ContactUserEmailEmailAddress = "Geçersiz e-posta adresi";
+        public static string ContactUserNameNotEmpty = "Ad boş bırakılamaz";
+        public static string ContactUserNameMinimumLength = "Ad en az 2 karakterden oluşmalı";
+        public static string ContactUserNameMaximumLength = "Ad en fazla 50 karakterden oluşabilir";
     }
 }

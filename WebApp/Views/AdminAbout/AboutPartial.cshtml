@@ -1,0 +1,30 @@
+﻿<button class="btn btn-success" data-toggle="modal" data-target="#about">
+    Yeni Hakkımızda Yazısı
+</button>
+
+<div id="about" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Yeni Hakkımızda Yazısı</h2>
+            </div>
+            <form action="/AdminAbout/AddAbout" method="post">
+                <div class="modal-body">
+                    <label>Hakkımızda Yazısı 1</label>
+                    <input type="text" name="AboutDetails1" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Yazısı 2</label>
+                    <input type="text" name="AboutDetails2" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Görseli 1</label>
+                    <input type="text" name="AboutImage1" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Görseli 2</label>
+                    <input type="text" name="AboutImage2" class="form-control" />
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

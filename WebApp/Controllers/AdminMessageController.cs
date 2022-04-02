@@ -101,6 +101,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddMessageFromDraft(Message message)
         {
             _validation = _validator.Validate(message);
@@ -119,6 +120,7 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [ValidateInput(false)]
         public ActionResult AddDraft(Message message)
         {
             Draft draft = new Draft();

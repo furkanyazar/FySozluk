@@ -17,7 +17,7 @@ namespace Business.ValidationRules
             RuleFor(x => x.ReceiverEmail).EmailAddress().WithMessage(Messages.InvalidEmailAddress);
             RuleFor(x => x.ReceiverEmail).MaximumLength(50).WithMessage(Messages.EmailMaximumLength);
             RuleFor(x => x.SenderEmail).NotEmpty().WithMessage(Messages.EmailNotEmpty);
-            RuleFor(x => x.SenderEmail).EmailAddress().WithMessage(Messages.InvalidEmailAddress);
+            //RuleFor(x => x.SenderEmail).EmailAddress().WithMessage(Messages.InvalidEmailAddress);
             RuleFor(x => x.SenderEmail).MaximumLength(50).WithMessage(Messages.EmailMaximumLength);
         }
     }

@@ -1,19 +1,21 @@
-﻿@using Entities.Concrete
-@model List<Contact>
+﻿@using System.Text.RegularExpressions
+@using Entities.Concrete
+@model List<Draft>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Draftbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br />
 <section class="content">
     <div class="row">
+        @Html.Action("MessagePartial", "AdminMessage")
         <!-- /.col -->
-        <div class="col-md-12">
+        <div class="col-md-9">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">Mesajlar</h3>
+                    <h3 class="card-title">Taslaklar</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control" placeholder="Ara">
@@ -58,75 +60,44 @@
                                     <tr>
                                         <td>
                                             <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check@{ Write(item.ContactId); }">
-                                                <label for="check@{ Write(item.ContactId); }"></label>
+                                                <input type="checkbox" value="" id="check@{ Write(item.DraftId); }">
+                                                <label for="check@{ Write(item.DraftId); }"></label>
                                             </div>
                                         </td>
                                         <td class="mailbox-star">
-                                            @if (!item.ContactStatus)
-                                            {
-                                                <i class="fas fa-star text-warning"></i>
-                                            }
+                                            <a href="/AdminMessage/AddMessageFromDraft/@item.DraftId"><i class="fas fa-star text-warning"></i></a>
                                         </td>
                                         <td class="mailbox-name">
-                                            <a href="/AdminContact/Message/@item.ContactId">
-                                                @if (!item.ContactStatus)
-                                                {
-                                                    <b>@item.ContactUserName</b>
-                                                }
-                                                else
-                                                {
-                                                    @item.ContactUserName
-                                                }
+                                            <a href="/AdminMessage/AddMessageFromDraft/@item.DraftId">
+                                                @item.ReceiverEmail
                                             </a>
                                         </td>
                                         <td class="mailbox-subject">
-                                            <b>@item.ContactSubject</b> - @{
-                                                if (item.ContactMessage.Length > 50)
+                                            <b>
+                                                @if (item.MessageSubject is null)
                                                 {
-                                                    Write(item.ContactMessage.Substring(0, 50) + "...");
+                                                    Write("Konu yok");
                                                 }
                                                 else
                                                 {
-                                                    Write(item.ContactMessage);
+                                                    Write(item.MessageSubject);
                                                 }
-                                            }
-                                        </td>
-                                        <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date">
-                                            @{
-                                                TimeSpan diff = DateTime.Now - item.ContactDate;
-
-                                                if (diff.TotalDays >= 365)
+                                            </b> - @{
+                                                if (item.MessageContent is null)
                                                 {
-                                                    Write((int)(diff.TotalDays / 365) + " yıl önce");
+                                                    Write("Mesaj yok");
                                                 }
-                                                else if (diff.TotalDays >= 30)
+                                                else if (Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty).Length > 50)
                                                 {
-                                                    Write((int)(diff.TotalDays / 30) + " ay önce");
-                                                }
-                                                else if (diff.TotalDays >= 7)
-                                                {
-                                                    Write((int)(diff.TotalDays / 7) + " hafta önce");
-                                                }
-                                                else if (diff.TotalDays >= 1)
-                                                {
-                                                    Write((int)diff.TotalDays + " gün önce");
-                                                }
-                                                else if (diff.TotalHours >= 1)
-                                                {
-                                                    Write((int)diff.TotalHours + " saat önce");
-                                                }
-                                                else if (diff.TotalMinutes >= 1)
-                                                {
-                                                    Write((int)diff.TotalMinutes + " dakika önce");
+                                                    Write(Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty).Substring(0, 50) + "...");
                                                 }
                                                 else
                                                 {
-                                                    Write((int)diff.TotalSeconds + " saniye önce");
+                                                    Write(Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty));
                                                 }
                                             }
                                         </td>
+                                        <td class="mailbox-attachment"><a href="/AdminMessage/DeleteDraft/@item.DraftId" class="btn btn-danger">Sil</a></td>
                                     </tr>
                                 }
                             </tbody>

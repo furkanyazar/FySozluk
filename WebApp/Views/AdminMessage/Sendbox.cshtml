@@ -1,4 +1,5 @@
-﻿@using Entities.Concrete
+﻿@using System.Text.RegularExpressions
+@using Entities.Concrete
 @model List<Message>
 
 @{
@@ -9,7 +10,7 @@
 <br />
 <section class="content">
     <div class="row">
-        @Html.Action("ContactPartial", "AdminContact")
+        @Html.Action("MessagePartial", "AdminMessage")
         <!-- /.col -->
         <div class="col-md-9">
             <div class="card card-primary card-outline">
@@ -59,37 +60,35 @@
                                     <tr>
                                         <td>
                                             <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check1">
-                                                <label for="check1"></label>
+                                                <input type="checkbox" value="" id="check@{ Write(item.MessageId); }">
+                                                <label for="check@{ Write(item.MessageId); }"></label>
                                             </div>
                                         </td>
                                         <td class="mailbox-star">
-                                            @if (!item.MessageStatus)
-                                            {
-                                                <i class="fas fa-star text-warning"></i>
-                                            }
                                         </td>
                                         <td class="mailbox-name">
                                             <a href="/AdminMessage/Message/@item.MessageId">
-                                                @if (!item.MessageStatus)
-                                                {
-                                                    <b>@item.ReceiverEmail</b>
-                                                }
-                                                else
-                                                {
-                                                    @item.ReceiverEmail
-                                                }
+                                                @item.ReceiverEmail
                                             </a>
                                         </td>
                                         <td class="mailbox-subject">
-                                            <b>@item.MessageSubject</b> - @{
-                                                if (item.MessageContent.Length > 50)
+                                            <b>
+                                                @if (item.MessageSubject is null)
                                                 {
-                                                    Write(item.MessageContent.Substring(0, 50) + "...");
+                                                    Write("Konu yok");
                                                 }
                                                 else
                                                 {
-                                                    Write(item.MessageContent);
+                                                    Write(item.MessageSubject);
+                                                }
+                                            </b> - @{
+                                                if (Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty).Length > 50)
+                                                {
+                                                    Write(Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty).Substring(0, 50) + "...");
+                                                }
+                                                else
+                                                {
+                                                    Write(Regex.Replace(item.MessageContent, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty));
                                                 }
                                             }
                                         </td>

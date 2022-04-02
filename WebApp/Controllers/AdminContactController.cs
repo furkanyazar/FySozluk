@@ -31,12 +31,5 @@ namespace WebApp.Controllers
 
             return View(result);
         }
-
-        public PartialViewResult ContactPartial()
-        {
-            var result = _contactService.GetAll();
-
-            return PartialView(result);
-        }
     }
 }

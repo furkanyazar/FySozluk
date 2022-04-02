@@ -1,12 +1,12 @@
 ﻿@using Entities.Concrete
-@model List<Contact>
+@model List<Message>
 
 @{
     int count = 0;
 
     foreach (var item in Model)
     {
-        if (!item.ContactStatus)
+        if (!item.MessageStatus)
         {
             count++;
         }
@@ -14,11 +14,8 @@
 }
 
 <div class="col-md-3">
-    <a href="/AdminContact" class="btn btn-primary btn-block mb-3">
-        Mesajlar @if (count > 0)
-        {
-            <span class="badge float-right">@count</span>
-        }
+    <a href="/AdminMessage/AddMessage" class="btn btn-primary btn-block mb-3">
+        Yeni Mesaj
     </a>
     <div class="card">
         <div class="card-header">
@@ -34,6 +31,10 @@
                 <li class="nav-item active">
                     <a href="/AdminMessage/Inbox" class="nav-link">
                         <i class="fas fa-inbox"></i> Gelen Mesajlar
+                        @if (count > 0)
+                        {
+                            <span class="badge bg-primary float-right">@count</span>
+                        }
                     </a>
                 </li>
                 <li class="nav-item">
@@ -42,13 +43,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/AdminMessage/Draftbox" class="nav-link">
                         <i class="far fa-file-alt"></i> Taslaklar
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-filter"></i> Spam
                     </a>
                 </li>
                 <li class="nav-item">

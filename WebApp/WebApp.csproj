@@ -2524,7 +2524,6 @@
     <Content Include="Views\AdminAbout\AboutPartial.cshtml" />
     <Content Include="Views\AdminContact\Index.cshtml" />
     <Content Include="Views\AdminContact\Message.cshtml" />
-    <Content Include="Views\AdminContact\ContactPartial.cshtml" />
     <Content Include="Views\AdminMessage\Inbox.cshtml" />
     <Content Include="Views\AdminMessage\Sendbox.cshtml" />
     <Content Include="Views\AdminMessage\Message.cshtml" />
@@ -2539,6 +2538,9 @@
     <Content Include="Scripts\summernote\summernote-lite.min.js.map" />
     <Content Include="Scripts\summernote\summernote.js.map" />
     <Content Include="Scripts\summernote\summernote.min.js.map" />
+    <Content Include="Views\AdminMessage\MessagePartial.cshtml" />
+    <Content Include="Views\AdminMessage\Draftbox.cshtml" />
+    <Content Include="Views\AdminMessage\AddMessageFromDraft.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

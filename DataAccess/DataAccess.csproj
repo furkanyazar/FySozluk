@@ -55,6 +55,7 @@
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
+    <Compile Include="Abstract\IDraftDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
+    <Compile Include="EntityFramework\EfDraftDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
@@ -107,6 +109,14 @@
     <Compile Include="Migrations\202203311601252_mig_add_status_to_message_and_contact.cs" />
     <Compile Include="Migrations\202203311601252_mig_add_status_to_message_and_contact.designer.cs">
       <DependentUpon>202203311601252_mig_add_status_to_message_and_contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204011950282_mig_add_draft.cs" />
+    <Compile Include="Migrations\202204011950282_mig_add_draft.designer.cs">
+      <DependentUpon>202204011950282_mig_add_draft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204011959335_mig_update_draft.cs" />
+    <Compile Include="Migrations\202204011959335_mig_update_draft.designer.cs">
+      <DependentUpon>202204011959335_mig_update_draft.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203311601252_mig_add_status_to_message_and_contact.resx">
       <DependentUpon>202203311601252_mig_add_status_to_message_and_contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204011950282_mig_add_draft.resx">
+      <DependentUpon>202204011950282_mig_add_draft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204011959335_mig_update_draft.resx">
+      <DependentUpon>202204011959335_mig_update_draft.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

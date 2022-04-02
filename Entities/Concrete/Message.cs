@@ -24,5 +24,7 @@ namespace Entities.Concrete
         public DateTime MessageDate { get; set; } = DateTime.Now;
 
         public bool MessageStatus { get; set; } = false;
+
+        public bool MessageIsDeleted { get; set; } = false;
     }
 }

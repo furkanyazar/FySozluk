@@ -3,7 +3,7 @@
 @model List<Message>
 
 @{
-    ViewBag.Title = "Sendbox";
+    ViewBag.Title = "Trashbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -15,7 +15,7 @@
         <div class="col-md-9">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">Gönderilen Mesajlar</h3>
+                    <h3 class="card-title">Çöp Kutusu</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control" placeholder="Ara">
@@ -68,7 +68,14 @@
                                         </td>
                                         <td class="mailbox-name">
                                             <a href="/AdminMessage/Message/@item.MessageId">
-                                                @item.ReceiverEmail
+                                                @if (item.SenderEmail == "admin")
+                                                {
+                                                    Write("ben, " + item.ReceiverEmail);
+                                                }
+                                                else
+                                                {
+                                                    @item.SenderEmail
+                                                }
                                             </a>
                                         </td>
                                         <td class="mailbox-subject">

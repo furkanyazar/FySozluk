@@ -2541,6 +2541,7 @@
     <Content Include="Views\AdminMessage\MessagePartial.cshtml" />
     <Content Include="Views\AdminMessage\Draftbox.cshtml" />
     <Content Include="Views\AdminMessage\AddMessageFromDraft.cshtml" />
+    <Content Include="Views\AdminMessage\Trashbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -118,6 +118,10 @@
     <Compile Include="Migrations\202204011959335_mig_update_draft.designer.cs">
       <DependentUpon>202204011959335_mig_update_draft.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204021316329_mig_update_message_for_deleted_messages.cs" />
+    <Compile Include="Migrations\202204021316329_mig_update_message_for_deleted_messages.designer.cs">
+      <DependentUpon>202204021316329_mig_update_message_for_deleted_messages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204011959335_mig_update_draft.resx">
       <DependentUpon>202204011959335_mig_update_draft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204021316329_mig_update_message_for_deleted_messages.resx">
+      <DependentUpon>202204021316329_mig_update_message_for_deleted_messages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

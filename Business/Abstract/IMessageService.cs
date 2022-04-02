@@ -11,6 +11,8 @@ namespace Business.Abstract
 
         List<Message> GetAllOfSentByEmail(string email);
 
+        List<Message> GetAllOfDeletedByEmail(string email);
+
         Message GetById(int id);
 
         void Add(Message message);

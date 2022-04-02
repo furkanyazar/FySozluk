@@ -29,14 +29,19 @@ namespace Business.Concrete
             return _messageDal.GetAll();
         }
 
+        public List<Message> GetAllOfDeletedByEmail(string email)
+        {
+            return _messageDal.GetAll(x => (x.ReceiverEmail == email || x.SenderEmail == email) && x.MessageIsDeleted);
+        }
+
         public List<Message> GetAllOfReceivedByEmail(string email)
         {
-            return _messageDal.GetAll(x => x.ReceiverEmail == email);
+            return _messageDal.GetAll(x => x.ReceiverEmail == email && !x.MessageIsDeleted);
         }
 
         public List<Message> GetAllOfSentByEmail(string email)
         {
-            return _messageDal.GetAll(x => x.SenderEmail == email);
+            return _messageDal.GetAll(x => x.SenderEmail == email && !x.MessageIsDeleted);
         }
 
         public Message GetById(int id)

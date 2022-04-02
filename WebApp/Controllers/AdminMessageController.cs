@@ -4,7 +4,6 @@ using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
-using System.Dynamic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -36,6 +35,13 @@ namespace WebApp.Controllers
         public ActionResult Draftbox()
         {
             var result = _draftService.GetAllOfSentByEmail("admin");
+
+            return View(result);
+        }
+
+        public ActionResult Trashbox()
+        {
+            var result = _messageService.GetAllOfDeletedByEmail("admin");
 
             return View(result);
         }
@@ -127,6 +133,23 @@ namespace WebApp.Controllers
             }
 
             return RedirectToAction("Inbox");
+        }
+
+        public ActionResult DeleteMessage(int id)
+        {
+            var result = _messageService.GetById(id);
+
+            if (result.MessageIsDeleted)
+            {
+                _messageService.Delete(result);
+            }
+            else
+            {
+                result.MessageIsDeleted = true;
+                _messageService.Update(result);
+            }
+
+            return result.SenderEmail == "admin" ? RedirectToAction("Sendbox") : RedirectToAction("Inbox");
         }
 
         public ActionResult DeleteDraft(int id)

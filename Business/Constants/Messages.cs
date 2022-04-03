@@ -61,5 +61,13 @@
         public static string MessageContentMaximumLength = "Mesaj en fazla 1000 karakterden oluşabilir";
         public static string MessageSubjectMinimumLength = "Konu en az 3 karakterden oluşmalı";
         public static string MessageSubjectMaximumLength = "Konu en fazla 100 karakterden oluşabilir";
+
+        public static string ImageNameMinimumLength = "Resim adı en az 3 karakterden oluşmalı";
+        public static string ImageNameMaximumLength = "Resim adı en fazla 50 karakterden oluşabilir";
+        public static string ImagePathNotEmpty = "Resim yolu boş bırakılamaz";
+        public static string ImagePathMinimumLength = "Resim yolu en az 5 karakterden oluşmalı";
+        public static string ImagePathMaximumLength = "Resim yolu en fazla 250 karakterden oluşabilir";
+        public static string ImageDescriptionMinimumLength = "Resim açıklaması en az 5 karakterden oluşmalı";
+        public static string ImageDescriptionMaximumLength = "Resim açıklaması en fazla 1000 karakterden oluşabilir";
     }
 }

@@ -18,5 +18,6 @@ namespace DataAccess.Concrete
         public DbSet<Writer> Writers { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Draft> Drafts { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

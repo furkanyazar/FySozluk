@@ -57,6 +57,7 @@
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IDraftDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfDraftDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfImageDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202203251649567_mig_writer_update.cs" />
@@ -122,6 +124,14 @@
     <Compile Include="Migrations\202204021316329_mig_update_message_for_deleted_messages.designer.cs">
       <DependentUpon>202204021316329_mig_update_message_for_deleted_messages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204031043344_mig_add_image.cs" />
+    <Compile Include="Migrations\202204031043344_mig_add_image.designer.cs">
+      <DependentUpon>202204031043344_mig_add_image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204031102292_mig_update_image.cs" />
+    <Compile Include="Migrations\202204031102292_mig_update_image.designer.cs">
+      <DependentUpon>202204031102292_mig_update_image.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204021316329_mig_update_message_for_deleted_messages.resx">
       <DependentUpon>202204021316329_mig_update_message_for_deleted_messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204031043344_mig_add_image.resx">
+      <DependentUpon>202204031043344_mig_add_image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204031102292_mig_update_image.resx">
+      <DependentUpon>202204031102292_mig_update_image.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

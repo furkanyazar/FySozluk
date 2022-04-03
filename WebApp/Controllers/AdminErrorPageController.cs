@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class ErrorPageController : Controller
+    public class AdminErrorPageController : Controller
     {
         // GET: ErrorPage
         public ActionResult Page403()

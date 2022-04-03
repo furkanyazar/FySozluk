@@ -135,7 +135,8 @@
     <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminContentController.cs" />
     <Compile Include="Controllers\AdminHeadingController.cs" />
-    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\AdminErrorPageController.cs" />
+    <Compile Include="Controllers\AdminGalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
@@ -2312,7 +2313,12 @@
     <Content Include="Content\css\alt\adminlte.pages.min.css.map" />
     <Content Include="Content\css\alt\adminlte.plugins.css.map" />
     <Content Include="Content\css\alt\adminlte.plugins.min.css.map" />
+    <Content Include="Scripts\ekko-lightbox\ekko-lightbox.css" />
+    <Content Include="Scripts\ekko-lightbox\ekko-lightbox.js" />
+    <Content Include="Scripts\ekko-lightbox\ekko-lightbox.min.js" />
     <Content Include="Scripts\icheck-bootstrap\LICENSE" />
+    <Content Include="Scripts\ekko-lightbox\ekko-lightbox.js.map" />
+    <Content Include="Scripts\ekko-lightbox\ekko-lightbox.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js\Chart.bundle.js" />
     <Content Include="Scripts\chart.js\Chart.bundle.min.js" />
@@ -2327,6 +2333,23 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui\AUTHORS.txt" />
+    <Content Include="Scripts\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery-ui\LICENSE.txt" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -2549,11 +2572,13 @@
     <Content Include="Views\AdminMessage\Draftbox.cshtml" />
     <Content Include="Views\AdminMessage\AddMessageFromDraft.cshtml" />
     <Content Include="Views\AdminMessage\Trashbox.cshtml" />
-    <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\AdminErrorPage\Page404.cshtml" />
+    <Content Include="Views\AdminGallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Gallery\" />
     <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>

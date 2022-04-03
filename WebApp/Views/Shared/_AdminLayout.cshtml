@@ -66,16 +66,19 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminCategory")) {
+                        @if (User.IsInRole("B"))
+                        {
+                            <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminCategory")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminCategory" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Kategoriler
-                                </p>
-                            </a>
-                        </li>
+                                <a href="/AdminCategory" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
+                                    </p>
+                                </a>
+                            </li>
+                        }
                         <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading")) {
                                 Write("menu-open");
                         }}">
@@ -174,7 +177,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/AdminGallery" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri

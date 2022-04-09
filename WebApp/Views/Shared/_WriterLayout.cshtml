@@ -86,20 +86,18 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminMessage")) {
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterMessage")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminMessage/InBox" class="nav-link">
+                            <a href="/WriterMessage/InBox" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Mesajlar
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminContent")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/AdminContent" class="nav-link">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Yazılarım

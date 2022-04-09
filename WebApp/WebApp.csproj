@@ -142,6 +142,7 @@
     <Compile Include="Controllers\AdminMessageController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\WriterHeadingController.cs" />
+    <Compile Include="Controllers\WriterMessageController.cs" />
     <Compile Include="Controllers\WriterPanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2800,6 +2801,14 @@
     <Content Include="Views\WriterHeading\MyHeadings.cshtml" />
     <Content Include="Views\WriterHeading\AddHeading.cshtml" />
     <Content Include="Views\WriterHeading\UpdateHeading.cshtml" />
+    <Content Include="Views\WriterMessage\MessagePartial.cshtml" />
+    <Content Include="Views\WriterMessage\Inbox.cshtml" />
+    <Content Include="Views\WriterMessage\Sendbox.cshtml" />
+    <Content Include="Views\WriterMessage\Draftbox.cshtml" />
+    <Content Include="Views\WriterMessage\Trashbox.cshtml" />
+    <Content Include="Views\WriterMessage\Message.cshtml" />
+    <Content Include="Views\WriterMessage\AddMessage.cshtml" />
+    <Content Include="Views\WriterMessage\AddMessageFromDraft.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />

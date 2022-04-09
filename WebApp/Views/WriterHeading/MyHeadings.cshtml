@@ -1,0 +1,131 @@
+﻿@using Entities.Concrete
+@model List<Heading>
+
+@{
+    ViewBag.Title = "MyHeadings";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@{
+    int colorIndex = 0;
+
+    List<string> colors = new List<string>();
+    colors.Add("badge-primary");
+    colors.Add("badge-success");
+    colors.Add("badge-danger");
+    colors.Add("badge-warning");
+    colors.Add("badge-info");
+
+    List<string> categories = new List<string>();
+    List<string> colorsOfCategory = new List<string>();
+
+    foreach (var item in Model)
+    {
+        bool control = false;
+
+        foreach (var category in categories)
+        {
+            if (item.Category.CategoryName == category)
+            {
+                control = true;
+            }
+        }
+
+        if (!control)
+        {
+            categories.Add(item.Category.CategoryName);
+        }
+    }
+
+    for (int i = 0; i < categories.Count; i++)
+    {
+        if (colorIndex == 5)
+        {
+            colorIndex = 0;
+        }
+
+        colorsOfCategory.Add(colors[colorIndex]);
+
+        colorIndex++;
+    }
+}
+
+<!-- Default box -->
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 5%">
+                        #
+                    </th>
+                    <th style="width: 25%">
+                        Başlık
+                    </th>
+                    <th style="width: 35%">
+                        Yazar
+                    </th>
+                    <th style="width: 5%" class="text-center">
+                        Kategori
+                    </th>
+                    <th style="width: 25%">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    int indexOfCategory = categories.IndexOf(item.Category.CategoryName);
+                    string color = colorsOfCategory[indexOfCategory];
+                    <tr>
+                        <td>
+                            @item.HeadingId
+                        </td>
+                        <td>
+                            <a>
+                                @item.HeadingName
+                            </a>
+                            <br />
+                            <small>
+                                @item.HeadingDate.ToString("dd.MM.yyyy") tarihinde oluşturuldu
+                            </small>
+                        </td>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImageUrl"> @item.Writer.WriterFirstName @item.Writer.WriterLastName
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge @color">@item.Category.CategoryName</span>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="#">
+                                <i class="fas fa-folder">
+                                </i>
+                                Yazılar
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/WriterHeading/UpdateHeading/@item.HeadingId">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Düzenle
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/WriterHeading/DeleteHeading/@item.HeadingId">
+                                <i class="fas fa-trash">
+                                </i>
+                                Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<div>
+    <a href="/WriterHeading/AddHeading" class="btn btn-success">Yeni Başlık</a>
+</div>
+<br />

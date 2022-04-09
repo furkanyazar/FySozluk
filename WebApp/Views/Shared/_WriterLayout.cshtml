@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mvc Demo Admin Sayfası</title>
+    <title>Mvc Demo Yazar Sayfası</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/fonts/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
@@ -66,85 +66,23 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        @if (User.IsInRole("B"))
-                        {
-                            <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminCategory")) {
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterPanel")) {
                                 Write("menu-open");
                         }}">
-                                <a href="/AdminCategory" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Kategoriler
-                                    </p>
-                                </a>
-                            </li>
-                        }
-                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading")) {
+                            <a href="/WriterPanel" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Profilim
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("WriterHeading")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminHeading" class="nav-link">
+                            <a href="/WriterHeading/MyHeadings/10" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Başlıklar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminWriter")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/AdminWriter" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Yazarlar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Grafikler
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 3</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminAbout")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/AdminAbout" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Hakkımızda
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminContact")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/AdminContact" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    İletişim
+                                    Başlıklarım
                                 </p>
                             </a>
                         </li>
@@ -164,33 +102,7 @@ to get the desired effect
                             <a href="/AdminContent" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Yazılar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
-                                <p>
-                                    Yetkilendirmeler
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminGallery")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/AdminGallery" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    Galeri
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/ErrorPage/Page404" class="nav-link">
-                                <i class="nav-icon far fa-envelope"></i>
-                                <p>
-                                    Hata Sayfaları
+                                    Yazılarım
                                 </p>
                             </a>
                         </li>

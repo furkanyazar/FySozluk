@@ -141,6 +141,8 @@
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\WriterHeadingController.cs" />
+    <Compile Include="Controllers\WriterPanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2793,6 +2795,11 @@
     <Content Include="Views\AdminErrorPage\Page404.cshtml" />
     <Content Include="Views\AdminGallery\Index.cshtml" />
     <Content Include="Views\AdminLogin\Index.cshtml" />
+    <Content Include="Views\Shared\_WriterLayout.cshtml" />
+    <Content Include="Views\WriterPanel\Index.cshtml" />
+    <Content Include="Views\WriterHeading\MyHeadings.cshtml" />
+    <Content Include="Views\WriterHeading\AddHeading.cshtml" />
+    <Content Include="Views\WriterHeading\UpdateHeading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />

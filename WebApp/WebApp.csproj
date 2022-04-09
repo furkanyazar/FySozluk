@@ -141,6 +141,7 @@
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\WriterContentController.cs" />
     <Compile Include="Controllers\WriterHeadingController.cs" />
     <Compile Include="Controllers\WriterMessageController.cs" />
     <Compile Include="Controllers\WriterPanelController.cs" />
@@ -2809,6 +2810,8 @@
     <Content Include="Views\WriterMessage\Message.cshtml" />
     <Content Include="Views\WriterMessage\AddMessage.cshtml" />
     <Content Include="Views\WriterMessage\AddMessageFromDraft.cshtml" />
+    <Content Include="Views\WriterContent\Index.cshtml" />
+    <Content Include="Views\WriterContent\ContentsByHeading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />

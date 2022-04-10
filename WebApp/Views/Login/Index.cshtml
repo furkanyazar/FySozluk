@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Entities.Concrete.Writer
+
+@{
     Layout = null;
 }
 
@@ -27,7 +29,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Hesabın var mı?</h3>
-                        <form action="/WriterLogin/Index" method="post" class="signin-form">
+                        <form action="/Login/Index" method="post" class="signin-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="E-posta" required name="WriterEmail">
                             </div>

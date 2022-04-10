@@ -140,10 +140,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
-    <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\WriterContentController.cs" />
     <Compile Include="Controllers\WriterHeadingController.cs" />
-    <Compile Include="Controllers\WriterLoginController.cs" />
     <Compile Include="Controllers\WriterMessageController.cs" />
     <Compile Include="Controllers\WriterPanelController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3007,7 +3006,6 @@
     <Content Include="Views\AdminMessage\Trashbox.cshtml" />
     <Content Include="Views\AdminErrorPage\Page404.cshtml" />
     <Content Include="Views\AdminGallery\Index.cshtml" />
-    <Content Include="Views\AdminLogin\Index.cshtml" />
     <Content Include="Views\Shared\_WriterLayout.cshtml" />
     <Content Include="Views\WriterPanel\Index.cshtml" />
     <Content Include="Views\WriterHeading\MyHeadings.cshtml" />
@@ -3023,7 +3021,8 @@
     <Content Include="Views\WriterMessage\AddMessageFromDraft.cshtml" />
     <Content Include="Views\WriterContent\Index.cshtml" />
     <Content Include="Views\WriterContent\ContentsByHeading.cshtml" />
-    <Content Include="Views\WriterLogin\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />

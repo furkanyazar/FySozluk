@@ -9,9 +9,7 @@
 @using (Html.BeginForm("UpdateCategory", "AdminCategory", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("ID")
-        @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
-        <br />
+        @Html.HiddenFor(x => x.CategoryId, new { @class = "form-control" })
         @Html.Label("Kategori Adı")
         @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryName)

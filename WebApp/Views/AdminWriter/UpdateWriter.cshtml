@@ -9,9 +9,7 @@
 @using (Html.BeginForm("UpdateWriter", "AdminWriter", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("ID")
-        @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
-        <br />
+        @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
         @Html.Label("Ad")
         @Html.TextBoxFor(x => x.WriterFirstName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterFirstName)

@@ -20,28 +20,28 @@ namespace WebApp.Controllers
         // GET: WriterMessage
         public ActionResult Inbox()
         {
-            var result = _messageService.GetAllOfReceivedByEmail("furkan@mail.com").OrderByDescending(x => x.MessageDate).ToList();
+            var result = _messageService.GetAllOfReceivedByEmail(Session["WriterEmail"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
 
             return View(result);
         }
 
         public ActionResult Sendbox()
         {
-            var result = _messageService.GetAllOfSentByEmail("furkan@mail.com").OrderByDescending(x => x.MessageDate).ToList();
+            var result = _messageService.GetAllOfSentByEmail(Session["WriterEmail"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
 
             return View(result);
         }
 
         public ActionResult Draftbox()
         {
-            var result = _draftService.GetAllOfSentByEmail("furkan@mail.com");
+            var result = _draftService.GetAllOfSentByEmail(Session["WriterEmail"].ToString());
 
             return View(result);
         }
 
         public ActionResult Trashbox()
         {
-            var result = _messageService.GetAllOfDeletedByEmail("furkan@mail.com");
+            var result = _messageService.GetAllOfDeletedByEmail(Session["WriterEmail"].ToString());
 
             return View(result);
         }
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
         [ValidateInput(false)]
         public ActionResult AddMessage(Message message)
         {
-            message.SenderEmail = "furkan@mail.com";
+            message.SenderEmail = Session["WriterEmail"].ToString();
             _validation = _validator.Validate(message);
 
             if (_validation.IsValid)
@@ -124,7 +124,7 @@ namespace WebApp.Controllers
         public ActionResult AddDraft(Message message)
         {
             Draft draft = new Draft();
-            draft.SenderEmail = "furkan@mail.com";
+            draft.SenderEmail = Session["WriterEmail"].ToString();
             draft.MessageContent = message.MessageContent;
             draft.MessageSubject = message.MessageSubject;
             draft.ReceiverEmail = message.ReceiverEmail;
@@ -151,7 +151,7 @@ namespace WebApp.Controllers
                 _messageService.Update(result);
             }
 
-            return result.SenderEmail == "furkan@mail.com" ? RedirectToAction("Sendbox") : RedirectToAction("Inbox");
+            return result.SenderEmail == Session["WriterEmail"].ToString() ? RedirectToAction("Sendbox") : RedirectToAction("Inbox");
         }
 
         public ActionResult DeleteDraft(int id)
@@ -172,7 +172,7 @@ namespace WebApp.Controllers
 
         public PartialViewResult MessagePartial()
         {
-            var result = _messageService.GetAllOfReceivedByEmail("furkan@mail.com");
+            var result = _messageService.GetAllOfReceivedByEmail(Session["WriterEmail"].ToString());
 
             return PartialView(result);
         }

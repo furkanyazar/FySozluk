@@ -17,7 +17,9 @@ namespace WebApp.Controllers
         // GET: WriterContent
         public ActionResult Index()
         {
-            var result = _contentService.GetAllByWriterId(10).OrderByDescending(x => x.ContentDate).ToList();
+            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+
+            var result = _contentService.GetAllByWriterId(writerId).OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 
@@ -26,7 +28,9 @@ namespace WebApp.Controllers
 
         public ActionResult ContentsByHeading(int id)
         {
-            var result = _contentService.GetAllByHeadingId(id).Where(x => x.WriterId == 10).OrderByDescending(x => x.ContentDate).ToList();
+            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+
+            var result = _contentService.GetAllByHeadingId(id).Where(x => x.WriterId == writerId).OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 

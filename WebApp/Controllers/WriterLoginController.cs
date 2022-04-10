@@ -29,8 +29,7 @@ namespace WebApp.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.WriterEmail, false);
-                Session["WriterId"] = user.WriterId;
-                Session["WriterId"] = user.WriterEmail;
+                Session["WriterEmail"] = user.WriterEmail;
 
                 return RedirectToAction("Index", "WriterPanel");
             }

@@ -21,9 +21,11 @@ namespace WebApp.Controllers
         private ValidationResult _validation;
 
         // GET: WriterHeading
-        public ActionResult MyHeadings(int id)
+        public ActionResult MyHeadings()
         {
-            var result = _headingService.GetAllByWriterId(id).Where(x => x.HeadingStatus).ToList();
+            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+
+            var result = _headingService.GetAllByWriterId(writerId).Where(x => x.HeadingStatus).ToList();
 
             GetForeignValues(result);
 
@@ -41,14 +43,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddHeading(Heading heading)
         {
-            heading.WriterId = 10;
+            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+
+            heading.WriterId = writerId;
 
             _validation = _validator.Validate(heading);
 
             if (_validation.IsValid)
             {
                 _headingService.Add(heading);
-                return RedirectToAction("MyHeadings/10");
+                return RedirectToAction("MyHeadings");
             }
 
             foreach (var item in _validation.Errors)
@@ -86,7 +90,7 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _headingService.Update(heading);
-                return RedirectToAction("MyHeadings/10");
+                return RedirectToAction("MyHeadings");
             }
 
             foreach (var item in _validation.Errors)
@@ -103,7 +107,7 @@ namespace WebApp.Controllers
             result.HeadingStatus = result.HeadingStatus ? false : true;
             _headingService.Update(result);
 
-            return RedirectToAction("MyHeadings/10");
+            return RedirectToAction("MyHeadings");
         }
 
         public void GetForeignValues(ICollection<Heading> result)

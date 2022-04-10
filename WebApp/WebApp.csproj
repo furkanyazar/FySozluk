@@ -3029,9 +3029,6 @@
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Gallery\" />
-    <Folder Include="Views\LoginController\" />
-    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

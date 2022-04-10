@@ -9,6 +9,8 @@ namespace Business.Abstract
 
         Writer GetById(int id);
 
+        Writer GetByEmail(string email);
+
         void Add(Writer writer);
 
         void Delete(Writer writer);

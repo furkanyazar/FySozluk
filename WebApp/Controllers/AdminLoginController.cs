@@ -29,8 +29,8 @@ namespace WebApp.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.AdminUserName, false);
+                Session["AdminId"] = user.AdminId;
                 Session["AdminUserName"] = user.AdminUserName;
-                Session["AdminPassword"] = user.AdminPassword;
                 Session["AdminRole"] = user.AdminRole;
 
                 return RedirectToAction("Index", "AdminCategory");

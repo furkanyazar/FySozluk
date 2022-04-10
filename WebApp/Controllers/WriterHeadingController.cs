@@ -5,6 +5,7 @@ using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
+using PagedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -32,13 +33,13 @@ namespace WebApp.Controllers
             return View(result);
         }
 
-        public ActionResult AllHeadings()
+        public ActionResult AllHeadings(int page = 1)
         {
-            var result = _headingService.GetAll();
+            var result = _headingService.GetAll().OrderByDescending(x => x.HeadingDate).ToList();
 
             GetForeignValues(result);
 
-            return View(result);
+            return View(result.ToPagedList(page, 10));
         }
 
         [HttpGet]

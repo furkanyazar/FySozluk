@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
+using FluentValidation.Results;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -13,6 +15,9 @@ namespace WebApp.Controllers
         private IContentService _contentService = new ContentManager(new EfContentDal());
         private IHeadingService _headingService = new HeadingManager(new EfHeadingDal());
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
+
+        private ContentValidator _validator = new ContentValidator();
+        private ValidationResult _validation;
 
         // GET: WriterContent
         public ActionResult Index()
@@ -35,6 +40,37 @@ namespace WebApp.Controllers
             GetForeignValues(result);
 
             return View(result);
+        }
+
+        [HttpGet]
+        public ActionResult AddContent(int id)
+        {
+            ViewBag.headingId = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddContent(Content content)
+        {
+            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+
+            content.WriterId = writerId;
+
+            _validation = _validator.Validate(content);
+
+            if (_validation.IsValid)
+            {
+                _contentService.Add(content);
+                return RedirectToAction("Index");
+            }
+
+            foreach (var item in _validation.Errors)
+            {
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            }
+
+            return View();
         }
 
         public void GetForeignValues(ICollection<Content> result)

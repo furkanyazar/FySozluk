@@ -2,7 +2,7 @@
 @model List<Heading>
 
 @{
-    ViewBag.Title = "MyHeadings";
+    ViewBag.Title = "AllHeadings";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
@@ -106,15 +106,10 @@
                                 </i>
                                 Yazılar
                             </a>
-                            <a class="btn btn-info btn-sm" href="/WriterHeading/UpdateHeading/@item.HeadingId">
+                            <a class="btn btn-info btn-sm" href="/WriterContent/AddContent/@item.HeadingId">
                                 <i class="fas fa-pencil-alt">
                                 </i>
-                                Düzenle
-                            </a>
-                            <a class="btn btn-danger btn-sm" href="/WriterHeading/DeleteHeading/@item.HeadingId">
-                                <i class="fas fa-trash">
-                                </i>
-                                Sil
+                                Yaz
                             </a>
                         </td>
                     </tr>
@@ -125,7 +120,4 @@
     <!-- /.card-body -->
 </div>
 <!-- /.card -->
-<div>
-    <a href="/WriterHeading/AddHeading" class="btn btn-success">Yeni Başlık</a>
-</div>
 <br />

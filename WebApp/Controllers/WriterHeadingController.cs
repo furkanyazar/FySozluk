@@ -32,6 +32,15 @@ namespace WebApp.Controllers
             return View(result);
         }
 
+        public ActionResult AllHeadings()
+        {
+            var result = _headingService.GetAll();
+
+            GetForeignValues(result);
+
+            return View(result);
+        }
+
         [HttpGet]
         public ActionResult AddHeading()
         {

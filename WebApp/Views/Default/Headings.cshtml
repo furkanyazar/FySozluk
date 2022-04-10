@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Entities.Concrete
+@model List<Heading>
+
+@{
     Layout = null;
 }
 
@@ -8,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mvc Demo Yazar Sayfası</title>
+    <title>Mvc Demo</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/fonts/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
@@ -48,17 +51,17 @@ to get the desired effect
             <a href="#" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="MVC Demo Yazar Paneli" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
-                <span class="brand-text font-weight-light">MVC Yazar Paneli</span>
+                <span class="brand-text font-weight-light">MVC Demo</span>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
+                    @*<div class="image">
+                            <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        </div>*@
                     <div class="info">
-                        <a href="#" class="d-block">Yazar Adı</a>
+                        <a href="#" class="d-block">Başlıklar</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -66,69 +69,23 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterPanel")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/WriterPanel" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Profilim
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("MyHeadings")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/WriterHeading/MyHeadings" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Başlıklarım
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AllHeadings")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/WriterHeading/AllHeadings" class="nav-link">
-                                <i class="nav-icon fas fa-list-alt"></i>
-                                <p>
-                                    Tüm Başlıklar
-                                </p>
-                            </a>
-                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterMessage")) {
-                                Write("menu-open");
-                        }}">
-                            <a href="/WriterMessage/InBox" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Mesajlar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/WriterContent" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Yazılarım
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    Siteye Git
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/Login/Logout" class="nav-link">
-                                <i class="nav-icon fas fa-apple-alt"></i>
-                                <p>
-                                    Çıkış yap
-                                </p>
-                            </a>
-                        </li>
+                        @foreach (var item in Model)
+                        {
+                            <li class="nav-item">
+                                <a href="/Default/Headings/@item.HeadingId" class="nav-link">
+                                    <p style="display:block">
+                                        @if (item.HeadingName.Length > 20)
+                                        {
+                                            Write(item.HeadingName.Substring(0, 20) + "...");
+                                        }
+                                        else
+                                        {
+                                            Write(item.HeadingName);
+                                        } <span class="badge badge-primary" style="float:right">5</span>
+                                    </p>
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -137,12 +94,7 @@ to get the desired effect
         </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Main content -->
-            <div class="content">
-                @RenderBody()
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content -->
+            @Html.Action("Index", "Default")
         </div>
         <!-- /.content-wrapper -->
     </div>

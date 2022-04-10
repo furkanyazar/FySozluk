@@ -66,9 +66,10 @@ namespace WebApp.Controllers
 
         public ActionResult Logout()
         {
-            Session.Clear();
+            FormsAuthentication.SignOut();
+            Session.Abandon();
 
-            return RedirectToAction("");
+            return RedirectToAction("Headings", "Default");
         }
     }
 }

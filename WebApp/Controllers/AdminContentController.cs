@@ -15,9 +15,12 @@ namespace WebApp.Controllers
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
 
         // GET: AdminContent
-        public ActionResult Index()
+        public ActionResult Index(string key)
         {
-            var result = _contentService.GetAll().OrderByDescending(x => x.ContentDate).ToList();
+            var result = _contentService.GetAllBySearchKey(key).OrderByDescending(x => x.ContentDate).ToList();
+
+            if (string.IsNullOrEmpty(key))
+                result = _contentService.GetAll().OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 

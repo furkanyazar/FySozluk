@@ -7,6 +7,8 @@ namespace Business.Abstract
     {
         List<Content> GetAll();
 
+        List<Content> GetAllBySearchKey(string key);
+
         List<Content> GetAllByHeadingId(int id);
 
         List<Content> GetAllByWriterId(int id);

@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AdminHeadingController.cs" />
     <Compile Include="Controllers\AdminErrorPageController.cs" />
     <Compile Include="Controllers\AdminGalleryController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminWriterController.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryForChart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
@@ -3035,11 +3037,11 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\WriterHeading\AllHeadings.cshtml" />
     <Content Include="Views\WriterContent\AddContent.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

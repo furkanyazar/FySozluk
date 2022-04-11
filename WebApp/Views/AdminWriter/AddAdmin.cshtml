@@ -10,17 +10,20 @@
 @using (Html.BeginForm("AddAdmin", "AdminWriter", FormMethod.Post))
 {
     <div class="form-group">
+        @Html.Label("Ad")
+        @Html.TextBoxFor(x => x.AdminFirstName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Soyad")
+        @Html.TextBoxFor(x => x.AdminLastName, new { @class = "form-control" })
+        <br />
         @Html.Label("E-posta")
         @Html.TextBoxFor(x => x.AdminEmail, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.AdminEmail)
         <br />
         @Html.Label("Şifre")
         @Html.PasswordFor(x => x.AdminPassword, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.AdminPassword)
         <br />
         @Html.Label("Rol")
         @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.AdminRole)
         <br />
         <button class="btn btn-success">Kaydet</button>
     </div>

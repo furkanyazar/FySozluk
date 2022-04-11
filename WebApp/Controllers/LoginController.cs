@@ -34,13 +34,16 @@ namespace WebApp.Controllers
 
             var result = _writerService.GetAll();
 
-            var user = result.FirstOrDefault(x => x.WriterEmail == writer.WriterEmail && x.WriterPassword == writer.WriterPassword);
+            var user = result.SingleOrDefault(x => x.WriterEmail == writer.WriterEmail && x.WriterPassword == writer.WriterPassword);
 
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.WriterEmail, false);
                 Session["WriterId"] = user.WriterId;
                 Session["WriterEmail"] = user.WriterEmail;
+                Session["WriterFirstName"] = user.WriterFirstName;
+                Session["WriterLastName"] = user.WriterLastName;
+                Session["WriterImageUrl"] = user.WriterImageUrl;
 
                 return RedirectToAction("Index", "WriterPanel");
             }
@@ -88,7 +91,7 @@ namespace WebApp.Controllers
 
             var result = _adminService.GetAll();
 
-            var user = result.FirstOrDefault(x => x.AdminEmail == admin.AdminEmail && x.AdminPassword == admin.AdminPassword);
+            var user = result.SingleOrDefault(x => x.AdminEmail == admin.AdminEmail && x.AdminPassword == admin.AdminPassword);
 
             if (user != null)
             {
@@ -96,6 +99,8 @@ namespace WebApp.Controllers
                 Session["AdminId"] = user.AdminId;
                 Session["AdminEmail"] = user.AdminEmail;
                 Session["AdminRole"] = user.AdminRole;
+                Session["AdminFirstName"] = user.AdminFirstName;
+                Session["AdminLastName"] = user.AdminLastName;
 
                 return RedirectToAction("Index", "AdminContent");
             }

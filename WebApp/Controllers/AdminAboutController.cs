@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
@@ -31,6 +32,18 @@ namespace WebApp.Controllers
 
             if (_validation.IsValid)
             {
+                if (Request.Files["AboutImage1"].ContentLength > 0)
+                {
+                    string path = Defaults.ABOUT_IMAGE1_URL;
+                    Request.Files[0].SaveAs(Server.MapPath(path));
+                }
+
+                if (Request.Files["AboutImage2"].ContentLength > 0)
+                {
+                    string path = Defaults.ABOUT_IMAGE2_URL;
+                    Request.Files[1].SaveAs(Server.MapPath(path));
+                }
+
                 _aboutService.Update(about);
 
                 return RedirectToAction("Index");

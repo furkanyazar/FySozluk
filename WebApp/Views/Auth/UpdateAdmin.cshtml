@@ -6,10 +6,18 @@
 }
 
 <h2>Admin Güncelle</h2>
+<br />
 @using (Html.BeginForm("UpdateAdmin", "Auth", FormMethod.Post))
 {
     <div class="form-group">
         @Html.HiddenFor(x => x.AdminId, new { @class = "form-control" })
+
+        @Html.Label("Ad")
+        @Html.TextBoxFor(x => x.AdminFirstName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Soyad")
+        @Html.TextBoxFor(x => x.AdminLastName, new { @class = "form-control" })
+        <br />
         @Html.Label("E-posta")
         @Html.TextBoxFor(x => x.AdminEmail, new { @class = "form-control" })
         <br />

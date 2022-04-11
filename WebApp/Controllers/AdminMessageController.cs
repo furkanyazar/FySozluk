@@ -20,28 +20,28 @@ namespace WebApp.Controllers
         // GET: Message
         public ActionResult Inbox()
         {
-            var result = _messageService.GetAllOfReceivedByEmail(Session["AdminUserName"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
+            var result = _messageService.GetAllOfReceivedByEmail(Session["AdminEmail"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
 
             return View(result);
         }
 
         public ActionResult Sendbox()
         {
-            var result = _messageService.GetAllOfSentByEmail(Session["AdminUserName"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
+            var result = _messageService.GetAllOfSentByEmail(Session["AdminEmail"].ToString()).OrderByDescending(x => x.MessageDate).ToList();
 
             return View(result);
         }
 
         public ActionResult Draftbox()
         {
-            var result = _draftService.GetAllOfSentByEmail(Session["AdminUserName"].ToString());
+            var result = _draftService.GetAllOfSentByEmail(Session["AdminEmail"].ToString());
 
             return View(result);
         }
 
         public ActionResult Trashbox()
         {
-            var result = _messageService.GetAllOfDeletedByEmail(Session["AdminUserName"].ToString());
+            var result = _messageService.GetAllOfDeletedByEmail(Session["AdminEmail"].ToString());
 
             return View(result);
         }
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
         [ValidateInput(false)]
         public ActionResult AddMessage(Message message)
         {
-            message.SenderEmail = Session["AdminUserName"].ToString();
+            message.SenderEmail = Session["AdminEmail"].ToString();
             _validation = _validator.Validate(message);
 
             if (_validation.IsValid)
@@ -124,7 +124,7 @@ namespace WebApp.Controllers
         public ActionResult AddDraft(Message message)
         {
             Draft draft = new Draft();
-            draft.SenderEmail = Session["AdminUserName"].ToString();
+            draft.SenderEmail = Session["AdminEmail"].ToString();
             draft.MessageContent = message.MessageContent;
             draft.MessageSubject = message.MessageSubject;
             draft.ReceiverEmail = message.ReceiverEmail;
@@ -151,7 +151,7 @@ namespace WebApp.Controllers
                 _messageService.Update(result);
             }
 
-            return result.SenderEmail == Session["AdminUserName"].ToString() ? RedirectToAction("Sendbox") : RedirectToAction("Inbox");
+            return result.SenderEmail == Session["AdminEmail"].ToString() ? RedirectToAction("Sendbox") : RedirectToAction("Inbox");
         }
 
         public ActionResult DeleteDraft(int id)
@@ -172,7 +172,7 @@ namespace WebApp.Controllers
 
         public PartialViewResult MessagePartial()
         {
-            var result = _messageService.GetAllOfReceivedByEmail(Session["AdminUserName"].ToString());
+            var result = _messageService.GetAllOfReceivedByEmail(Session["AdminEmail"].ToString());
 
             return PartialView(result);
         }

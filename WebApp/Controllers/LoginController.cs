@@ -31,6 +31,7 @@ namespace WebApp.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.WriterEmail, false);
+                Session["WriterId"] = user.WriterId;
                 Session["WriterEmail"] = user.WriterEmail;
 
                 return RedirectToAction("Index", "WriterPanel");
@@ -50,12 +51,13 @@ namespace WebApp.Controllers
         {
             var result = _adminService.GetAll();
 
-            var user = result.FirstOrDefault(x => x.AdminUserName == admin.AdminUserName && x.AdminPassword == admin.AdminPassword);
+            var user = result.FirstOrDefault(x => x.AdminEmail == admin.AdminEmail && x.AdminPassword == admin.AdminPassword);
 
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(user.AdminUserName, false);
-                Session["AdminUserName"] = user.AdminUserName;
+                FormsAuthentication.SetAuthCookie(user.AdminEmail, false);
+                Session["AdminId"] = user.AdminId;
+                Session["AdminEmail"] = user.AdminEmail;
                 Session["AdminRole"] = user.AdminRole;
 
                 return RedirectToAction("Index", "AdminContent");

@@ -24,7 +24,7 @@ namespace WebApp.Controllers
         // GET: WriterHeading
         public ActionResult MyHeadings()
         {
-            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+            int writerId = (int)Session["WriterId"];
 
             var result = _headingService.GetAllByWriterId(writerId).Where(x => x.HeadingStatus).ToList();
 
@@ -53,9 +53,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddHeading(Heading heading)
         {
-            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
-
-            heading.WriterId = writerId;
+            heading.WriterId = (int)Session["WriterId"];
 
             _validation = _validator.Validate(heading);
 

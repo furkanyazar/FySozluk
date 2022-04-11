@@ -9,9 +9,9 @@ namespace Entities.Concrete
         public int AdminId { get; set; }
 
         [StringLength(50)]
-        public string AdminUserName { get; set; }
+        public string AdminEmail { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string AdminPassword { get; set; }
 
         [StringLength(1)]

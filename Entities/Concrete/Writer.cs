@@ -27,7 +27,7 @@ namespace Entities.Concrete
         [StringLength(50)]
         public string WriterEmail { get; set; }
 
-        [StringLength(250)]
+        [StringLength(500)]
         public string WriterPassword { get; set; }
 
         public bool WriterStatus { get; set; } = true;

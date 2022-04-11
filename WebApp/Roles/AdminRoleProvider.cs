@@ -34,11 +34,11 @@ namespace WebApp.Roles
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string email)
         {
             Context context = new Context();
 
-            var result = context.Admins.FirstOrDefault(x => x.AdminUserName == username);
+            var result = context.Admins.FirstOrDefault(x => x.AdminEmail == email);
 
             return new string[] { result.AdminRole };
         }

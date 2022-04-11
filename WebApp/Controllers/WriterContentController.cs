@@ -22,7 +22,7 @@ namespace WebApp.Controllers
         // GET: WriterContent
         public ActionResult Index()
         {
-            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+            int writerId = (int)Session["WriterId"];
 
             var result = _contentService.GetAllByWriterId(writerId).OrderByDescending(x => x.ContentDate).ToList();
 
@@ -33,7 +33,7 @@ namespace WebApp.Controllers
 
         public ActionResult ContentsByHeading(int id)
         {
-            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
+            int writerId = (int)Session["WriterId"];
 
             var result = _contentService.GetAllByHeadingId(id).Where(x => x.WriterId == writerId).OrderByDescending(x => x.ContentDate).ToList();
 
@@ -53,9 +53,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddContent(Content content)
         {
-            int writerId = _writerService.GetByEmail(Session["WriterEmail"].ToString()).WriterId;
-
-            content.WriterId = writerId;
+            content.WriterId = (int)Session["WriterId"];
 
             _validation = _validator.Validate(content);
 

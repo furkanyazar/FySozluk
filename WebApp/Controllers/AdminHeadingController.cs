@@ -31,6 +31,15 @@ namespace WebApp.Controllers
             return View(result);
         }
 
+        public ActionResult HeadingReport()
+        {
+            var result = _headingService.GetAll().OrderByDescending(x => x.HeadingDate).ToList();
+
+            GetForeignValues(result);
+
+            return View(result);
+        }
+
         [HttpGet]
         public ActionResult AddHeading()
         {

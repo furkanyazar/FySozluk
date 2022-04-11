@@ -79,7 +79,7 @@ to get the desired effect
                                 </a>
                             </li>
                         }
-                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading")) {
+                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading") && !HttpContext.Current.Request.Path.Contains("HeadingReport")) {
                                 Write("menu-open");
                         }}">
                             <a href="/AdminHeading" class="nav-link">
@@ -99,7 +99,9 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("Chart")) {
+                                Write("menu-open");
+                        }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
@@ -135,6 +137,16 @@ to get the desired effect
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
                                     Hakkımızda
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("HeadingReport")) {
+                                Write("menu-open");
+                        }}">
+                            <a href="/AdminHeading/HeadingReport" class="nav-link">
+                                <i class="nav-icon fas fa-bars"></i>
+                                <p>
+                                    Raporlar
                                 </p>
                             </a>
                         </li>

@@ -7,10 +7,10 @@
 }
 
 <h2>Profilim</h2>
-@using (Html.BeginForm("Index", "WriterPanel", FormMethod.Post))
+@using (Html.BeginForm("Index", "WriterPanel", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     <div class="form-group">
-        @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.WriterId)
         @Html.Label("Ad")
         @Html.TextBoxFor(x => x.WriterFirstName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterFirstName)
@@ -24,7 +24,7 @@
         @Html.ValidationMessageFor(x => x.WriterEmail)
         <br />
         @Html.Label("Şifre")
-        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control", @placeholder = "Değiştirmek için doldurunuz" })
+        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control", @placeholder = "Değiştirmek için doldurunuz", @value = "" })
         @Html.ValidationMessageFor(x => x.WriterPassword)
         <br />
         @Html.Label("Hakkında")
@@ -36,8 +36,10 @@
         @Html.ValidationMessageFor(x => x.WriterTitle)
         <br />
         @Html.Label("Fotoğraf")
-        @Html.TextBoxFor(x => x.WriterImageUrl, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.WriterImageUrl)
+        @Html.HiddenFor(x => x.WriterImageUrl)
+        <br />
+        <input type="file" name="WriterImageUrl" />
+        <br />
         <br />
         <button class="btn btn-success">Kaydet</button>
     </div>

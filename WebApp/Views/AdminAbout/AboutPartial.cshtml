@@ -1,6 +1,5 @@
-﻿<button class="btn btn-success" data-toggle="modal" data-target="#about">
-    Yeni Hakkımızda Yazısı
-</button>
+﻿@using Entities.Concrete
+@model About
 
 <div id="about" class="modal">
     <div class="modal-dialog">
@@ -8,19 +7,24 @@
             <div class="modal-header">
                 <h2>Yeni Hakkımızda Yazısı</h2>
             </div>
-            <form action="/AdminAbout/AddAbout" method="post">
+            <form action="/AdminAbout/UpdateAbout" method="post" , enctype="multipart/form-data">
                 <div class="modal-body">
+                    <input type="hidden" name="AboutId" value="@Model.AboutId" />
                     <label>Hakkımızda Yazısı 1</label>
-                    <input type="text" name="AboutDetails1" class="form-control" />
+                    <textarea name="AboutDetails1" class="form-control" rows="4">@Model.AboutDetails1</textarea>
                     <br />
                     <label>Hakkımızda Yazısı 2</label>
-                    <input type="text" name="AboutDetails2" class="form-control" />
+                    <textarea name="AboutDetails2" class="form-control" rows="4">@Model.AboutDetails2</textarea>
                     <br />
                     <label>Hakkımızda Görseli 1</label>
-                    <input type="text" name="AboutImage1" class="form-control" />
+                    <br />
+                    <input type="file" name="AboutImage1" />
+                    <br />
                     <br />
                     <label>Hakkımızda Görseli 2</label>
-                    <input type="text" name="AboutImage2" class="form-control" />
+                    <br />
+                    <input type="file" name="AboutImage2" />
+                    <br />
                     <br />
                     <button class="btn btn-success">Kaydet</button>
                 </div>

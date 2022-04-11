@@ -1,5 +1,5 @@
 ﻿@using Entities.Concrete
-@model List<About>
+@model About
 
 @{
     ViewBag.Title = "Index";
@@ -9,18 +9,15 @@
 <table class="table table-hover">
     <tr>
         <th>ID</th>
-        <th>Hakkımızda Yazısı</th>
-        <th>Aktif Et</th>
-        <th>Pasif Et</th>
+        <th>Hakkımızda Yazısı 1</th>
+        <th>Hakkımızda Yazısı 2</th>
+        <th></th>
     </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.AboutId</td>
-            <td>Başlık</td>
-            <td><a href="#" class="btn btn-success">Aktif Et</a></td>
-            <td><a href="#" class="btn btn-danger">Pasif Et</a></td>
-        </tr>
-    }
+    <tr>
+        <td>@Model.AboutId</td>
+        <td>@Model.AboutDetails1</td>
+        <td>@Model.AboutDetails2</td>
+        <td><button class="btn btn-success" data-toggle="modal" data-target="#about">Düzenle</button></td>
+    </tr>
 </table>
 @Html.Action("AboutPartial", "AdminAbout")

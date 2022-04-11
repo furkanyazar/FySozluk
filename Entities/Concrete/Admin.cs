@@ -9,6 +9,12 @@ namespace Entities.Concrete
         public int AdminId { get; set; }
 
         [StringLength(50)]
+        public string AdminFirstName { get; set; }
+
+        [StringLength(50)]
+        public string AdminLastName { get; set; }
+
+        [StringLength(50)]
         public string AdminEmail { get; set; }
 
         [StringLength(500)]

@@ -4,6 +4,7 @@ using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -18,19 +19,20 @@ namespace WebApp.Controllers
         // GET: About
         public ActionResult Index()
         {
-            var result = _aboutService.GetAll();
+            var result = _aboutService.GetAll().SingleOrDefault();
 
             return View(result);
         }
 
         [HttpPost]
-        public ActionResult AddAbout(About about)
+        public ActionResult UpdateAbout(About about)
         {
             _validation = _validator.Validate(about);
 
             if (_validation.IsValid)
             {
-                _aboutService.Add(about);
+                _aboutService.Update(about);
+
                 return RedirectToAction("Index");
             }
 
@@ -44,7 +46,9 @@ namespace WebApp.Controllers
 
         public PartialViewResult AboutPartial()
         {
-            return PartialView();
+            var result = _aboutService.GetAll().SingleOrDefault();
+
+            return PartialView(result);
         }
     }
 }

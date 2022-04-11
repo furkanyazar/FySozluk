@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
+using System;
+using System.IO;
 using System.Web.Mvc;
+using WebApp.Helpers;
 
 namespace WebApp.Controllers
 {
@@ -29,14 +33,35 @@ namespace WebApp.Controllers
         {
             if (writer.WriterPassword is null)
             {
-                writer.WriterPassword = _writerService.GetById(writer.WriterId).WriterPassword;
+                writer.WriterPassword = Defaults.PASSWORD_HASH_KEY;
             }
 
             _validation = _validator.Validate(writer);
 
             if (_validation.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    string extension = Path.GetExtension(Request.Files[0].FileName);
+                    string path = "~/Images/profiles/" + fileName + extension;
+
+                    Request.Files[0].SaveAs(Server.MapPath(path));
+
+                    writer.WriterImageUrl = "/Images/profiles/" + fileName + extension;
+                }
+
+                if (writer.WriterPassword == Defaults.PASSWORD_HASH_KEY)
+                {
+                    writer.WriterPassword = _writerService.GetById(writer.WriterId).WriterPassword;
+                }
+                else
+                {
+                    writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+                }
+
                 _writerService.Update(writer);
+
                 return RedirectToAction("Index");
             }
 

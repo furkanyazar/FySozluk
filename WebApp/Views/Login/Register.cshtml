@@ -1,17 +1,81 @@
-﻿
+﻿@model Entities.Concrete.Writer
+
 @{
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Register</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/Content/register/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/register/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/Content/register/css/style.css">
+
+    <title>MVC Demo Yazar Kayıt Olma Sayfası</title>
 </head>
 <body>
-    <div> 
+
+    <div class="half">
+        <div class="bg order-1 order-md-2" style="background-image: url('/Content/register/images/bg_1.jpg');"></div>
+        <div class="contents order-2 order-md-1">
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-block">
+                            <div class="text-center mb-5">
+                                <h3>Kayıt Ol</h3>
+                            </div>
+                            <form action="/Login/Register" method="post">
+                                <div class="form-group first">
+                                    <label for="WriterFirstName">Ad</label>
+                                    <input type="text" class="form-control" placeholder="Furkan" name="WriterFirstName">
+                                </div>
+                                <div class="form-group first">
+                                    <label for="WriterLastName">Soyad</label>
+                                    <input type="text" class="form-control" placeholder="Yazar" name="WriterLastName">
+                                </div>
+                                <div class="form-group first">
+                                    <label for="WriterEmail">E-posta</label>
+                                    <input type="text" class="form-control" placeholder="furkanyazar9853@gmail.com" name="WriterEmail">
+                                </div>
+                                <div class="form-group">
+                                    <label for="WriterPassword">Şifre</label>
+                                    <input type="password" class="form-control" placeholder="Şifre" name="WriterPassword">
+                                </div>
+
+                                <div class="d-sm-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-3 mb-sm-0">
+                                        <span class="caption">Agree our <a href="#">Terms and Conditions</a></span>
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span class="ml-auto"><a href="/Login" class="forgot-pass">Hesabın var mı?</a></span>
+                                </div>
+
+                                <input type="submit" value="Kayıt Ol" class="btn btn-block btn-primary">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="~/Content/register/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/register/js/popper.min.js"></script>
+    <script src="~/Content/register/js/bootstrap.min.js"></script>
+    <script src="~/Content/register/js/main.js"></script>
 </body>
 </html>

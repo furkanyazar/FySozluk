@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AdminHeadingController.cs" />
     <Compile Include="Controllers\AdminErrorPageController.cs" />
     <Compile Include="Controllers\AdminGalleryController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3040,6 +3041,10 @@
     <Content Include="Views\WriterContent\AddContent.cshtml" />
     <Content Include="Views\Chart\Index.cshtml" />
     <Content Include="Views\AdminHeading\HeadingReport.cshtml" />
+    <Content Include="Views\AdminWriter\AddAdmin.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Auth\UpdateAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminLTE-3.0.4\login-form-19\fonts\" />

@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
+using FluentValidation.Results;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -14,6 +16,9 @@ namespace WebApp.Controllers
     {
         private IAdminService _adminService = new AdminManager(new EfAdminDal());
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
+
+        private WriterValidator _validator = new WriterValidator();
+        private ValidationResult _validation;
 
         // GET: Login
         [HttpGet]
@@ -41,6 +46,33 @@ namespace WebApp.Controllers
             }
 
             return RedirectToAction("");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Writer writer)
+        {
+            _validation = _validator.Validate(writer);
+
+            if (_validation.IsValid)
+            {
+                writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+                _writerService.Add(writer);
+
+                return RedirectToAction("");
+            }
+
+            foreach (var item in _validation.Errors)
+            {
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            }
+
+            return View();
         }
 
         [HttpGet]

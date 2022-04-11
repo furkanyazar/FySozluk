@@ -180,8 +180,10 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("Auth")) {
+                                Write("menu-open");
+                        }}">
+                            <a href="/Auth" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     Yetkilendirmeler

@@ -70,6 +70,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AddAdmin(Admin admin)
         {
+            admin.AdminPassword = HashingHelper.PasswordHash(admin.AdminPassword);
             _adminService.Add(admin);
 
             return RedirectToAction("Index");

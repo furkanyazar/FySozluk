@@ -15,7 +15,7 @@
         @Html.ValidationMessageFor(x => x.CategoryName)
         <br />
         @Html.Label("Açıklama")
-        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control", @rows = "5" })
         @Html.ValidationMessageFor(x => x.CategoryDescription)
         <br />
         <button class="btn btn-success">Kaydet</button>

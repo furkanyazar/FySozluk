@@ -38,7 +38,8 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _categoryService.Add(category);
-                return RedirectToAction("Index");
+
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)
@@ -65,7 +66,8 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _categoryService.Update(category);
-                return RedirectToAction("Index");
+
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)
@@ -80,9 +82,10 @@ namespace WebApp.Controllers
         {
             var result = _categoryService.GetById(id);
             result.CategoryStatus = result.CategoryStatus ? false : true;
+
             _categoryService.Update(result);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("");
         }
     }
 }

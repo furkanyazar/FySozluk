@@ -48,6 +48,7 @@ namespace WebApp.Controllers
         {
             var result = _adminService.GetById(id);
             result.AdminStatus = result.AdminStatus ? false : true;
+
             _adminService.Update(result);
 
             return RedirectToAction("");

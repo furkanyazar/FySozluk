@@ -39,13 +39,14 @@ namespace WebApp.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.WriterEmail, false);
+
                 Session["WriterId"] = user.WriterId;
                 Session["WriterEmail"] = user.WriterEmail;
                 Session["WriterFirstName"] = user.WriterFirstName;
                 Session["WriterLastName"] = user.WriterLastName;
                 Session["WriterImageUrl"] = user.WriterImageUrl;
 
-                return RedirectToAction("Index", "WriterPanel");
+                return RedirectToAction("", "WriterPanel");
             }
 
             return RedirectToAction("");
@@ -65,6 +66,7 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+
                 _writerService.Add(writer);
 
                 return RedirectToAction("");
@@ -96,13 +98,14 @@ namespace WebApp.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.AdminEmail, false);
+
                 Session["AdminId"] = user.AdminId;
                 Session["AdminEmail"] = user.AdminEmail;
                 Session["AdminRole"] = user.AdminRole;
                 Session["AdminFirstName"] = user.AdminFirstName;
                 Session["AdminLastName"] = user.AdminLastName;
 
-                return RedirectToAction("Index", "AdminContent");
+                return RedirectToAction("", "AdminContent");
             }
 
             return RedirectToAction("Admin");
@@ -111,6 +114,8 @@ namespace WebApp.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+
+            Session.Clear();
             Session.Abandon();
 
             return RedirectToAction("Headings", "Default");

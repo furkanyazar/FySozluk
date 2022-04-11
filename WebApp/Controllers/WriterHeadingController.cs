@@ -60,6 +60,7 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _headingService.Add(heading);
+
                 return RedirectToAction("MyHeadings");
             }
 
@@ -90,6 +91,7 @@ namespace WebApp.Controllers
         public ActionResult UpdateHeading(Heading heading)
         {
             var oldHeading = _headingService.GetById(heading.HeadingId);
+
             heading.HeadingDate = oldHeading.HeadingDate;
             heading.WriterId = oldHeading.WriterId;
 
@@ -98,6 +100,7 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _headingService.Update(heading);
+
                 return RedirectToAction("MyHeadings");
             }
 
@@ -112,7 +115,9 @@ namespace WebApp.Controllers
         public ActionResult DeleteHeading(int id)
         {
             var result = _headingService.GetById(id);
+
             result.HeadingStatus = result.HeadingStatus ? false : true;
+
             _headingService.Update(result);
 
             return RedirectToAction("MyHeadings");

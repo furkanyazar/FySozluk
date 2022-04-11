@@ -49,7 +49,7 @@ namespace WebApp.Controllers
 
             if (_validation.IsValid)
             {
-                if (Request.Files.Count > 0)
+                if (Request.Files["WriterImage"].ContentLength > 0)
                 {
                     string fileName = Guid.NewGuid().ToString();
                     string extension = Path.GetExtension(Request.Files[0].FileName);
@@ -61,9 +61,10 @@ namespace WebApp.Controllers
                 }
 
                 writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+
                 _writerService.Add(writer);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)
@@ -84,9 +85,10 @@ namespace WebApp.Controllers
         public ActionResult AddAdmin(Admin admin)
         {
             admin.AdminPassword = HashingHelper.PasswordHash(admin.AdminPassword);
+
             _adminService.Add(admin);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("");
         }
 
         [HttpGet]
@@ -109,7 +111,7 @@ namespace WebApp.Controllers
 
             if (_validation.IsValid)
             {
-                if (Request.Files.Count > 0)
+                if (Request.Files["WriterImage"].ContentLength > 0)
                 {
                     string fileName = Guid.NewGuid().ToString();
                     string extension = Path.GetExtension(Request.Files[0].FileName);
@@ -131,7 +133,7 @@ namespace WebApp.Controllers
 
                 _writerService.Update(writer);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)

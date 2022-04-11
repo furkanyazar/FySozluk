@@ -12,7 +12,7 @@
     <div class="form-group">
         <input type="hidden" name="HeadingId" value="@ViewBag.headingId" />
         @Html.Label("Yazı")
-        @Html.TextAreaFor(x => x.ContentText, new { @class = "form-control" })
+        @Html.TextAreaFor(x => x.ContentText, new { @class = "form-control", @rows = "5" })
         @Html.ValidationMessageFor(x => x.ContentText)
         <br />
         <button class="btn btn-success">Kaydet</button>

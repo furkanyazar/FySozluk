@@ -71,11 +71,13 @@ namespace WebApp.Controllers
         public ActionResult AddMessage(Message message)
         {
             message.SenderEmail = Session["AdminEmail"].ToString();
+
             _validation = _validator.Validate(message);
 
             if (_validation.IsValid)
             {
                 _messageService.Add(message);
+
                 return RedirectToAction("Inbox");
             }
 
@@ -109,6 +111,7 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _messageService.Add(message);
+
                 return RedirectToAction("Inbox");
             }
 
@@ -148,6 +151,7 @@ namespace WebApp.Controllers
             else
             {
                 result.MessageIsDeleted = true;
+
                 _messageService.Update(result);
             }
 

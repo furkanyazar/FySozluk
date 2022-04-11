@@ -5,7 +5,6 @@ using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -43,7 +42,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> writers = (from x in _writerService.GetAll()
+            List<SelectListItem> writers = (from x in _writerService.GetAll().OrderBy(x => x.WriterFirstName)
                                             select new SelectListItem
                                             {
                                                 Text = x.WriterFirstName + " " + x.WriterLastName,
@@ -64,7 +63,8 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _headingService.Add(heading);
-                return RedirectToAction("Index");
+
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)
@@ -102,7 +102,8 @@ namespace WebApp.Controllers
             if (_validation.IsValid)
             {
                 _headingService.Update(heading);
-                return RedirectToAction("Index");
+
+                return RedirectToAction("");
             }
 
             foreach (var item in _validation.Errors)
@@ -119,7 +120,7 @@ namespace WebApp.Controllers
             result.HeadingStatus = result.HeadingStatus ? false : true;
             _headingService.Update(result);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("");
         }
 
         public ActionResult HeadingsByCategory(int id)
@@ -163,7 +164,7 @@ namespace WebApp.Controllers
 
         public ICollection<SelectListItem> GetCategoriesSelectListItems()
         {
-            return (from x in _categoryService.GetAll()
+            return (from x in _categoryService.GetAll().OrderBy(x => x.CategoryName)
                     select new SelectListItem
                     {
                         Text = x.CategoryName,

@@ -3,6 +3,7 @@ using Business.Concrete;
 using DataAccess.EntityFramework;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -24,7 +25,7 @@ namespace WebApp.Controllers
 
         public PartialViewResult Index(int id = 0)
         {
-            var result = _contentService.GetAllByHeadingId(id);
+            var result = id == 0 ? _contentService.GetAll().OrderByDescending(x => x.ContentDate).ToList() : _contentService.GetAllByHeadingId(id).OrderByDescending(x => x.ContentDate).ToList();
 
             GetForeignValues(result);
 

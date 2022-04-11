@@ -16,7 +16,7 @@ namespace WebApp.Controllers
         private ValidationResult _validation;
 
         // GET: AdminCategory
-        [Authorize(Roles = "B")]
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var result = _categoryService.GetAll();

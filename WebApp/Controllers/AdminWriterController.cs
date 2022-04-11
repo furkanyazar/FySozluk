@@ -6,12 +6,14 @@ using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
 using System.Web.Mvc;
+using WebApp.Helpers;
 
 namespace WebApp.Controllers
 {
     public class AdminWriterController : Controller
     {
         private IWriterService _writerService = new WriterManager(new EfWriterDal());
+        private IAdminService _adminService = new AdminManager(new EfAdminDal());
 
         private WriterValidator _validator = new WriterValidator();
         private ValidationResult _validation;
@@ -45,7 +47,9 @@ namespace WebApp.Controllers
 
             if (_validation.IsValid)
             {
+                writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
                 _writerService.Add(writer);
+
                 return RedirectToAction("Index");
             }
 
@@ -55,6 +59,20 @@ namespace WebApp.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult AddAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddAdmin(Admin admin)
+        {
+            _adminService.Add(admin);
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -72,12 +90,17 @@ namespace WebApp.Controllers
             {
                 writer.WriterPassword = _writerService.GetById(writer.WriterId).WriterPassword;
             }
+            else
+            {
+                writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+            }
 
             _validation = _validator.Validate(writer);
 
             if (_validation.IsValid)
             {
                 _writerService.Update(writer);
+
                 return RedirectToAction("Index");
             }
 

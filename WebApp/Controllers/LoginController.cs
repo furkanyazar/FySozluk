@@ -5,6 +5,7 @@ using Entities.Concrete;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebApp.Helpers;
 
 namespace WebApp.Controllers
 {
@@ -24,6 +25,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Index(Writer writer)
         {
+            writer.WriterPassword = HashingHelper.PasswordHash(writer.WriterPassword);
+
             var result = _writerService.GetAll();
 
             var user = result.FirstOrDefault(x => x.WriterEmail == writer.WriterEmail && x.WriterPassword == writer.WriterPassword);
@@ -49,6 +52,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Admin(Admin admin)
         {
+            admin.AdminPassword = HashingHelper.PasswordHash(admin.AdminPassword);
+
             var result = _adminService.GetAll();
 
             var user = result.FirstOrDefault(x => x.AdminEmail == admin.AdminEmail && x.AdminPassword == admin.AdminPassword);

@@ -6,6 +6,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <!-- Default box -->
 <div class="card">
     <div class="card-body p-0">
@@ -80,11 +82,12 @@
                                 </i>
                                 Düzenle
                             </a>
-                            <a class="btn btn-danger btn-sm" href="/AdminCategory/DeleteCategory/@item.CategoryId">
+                            <a id="btnDelete" onclick="btnDeleteClick(@item.CategoryId)" class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                                 Sil
                             </a>
+                            <a id="deleteCategory/@item.CategoryId" href="/AdminCategory/DeleteCategory/@item.CategoryId" hidden></a>
                         </td>
                     </tr>
                 }
@@ -98,3 +101,20 @@
     <a href="/AdminCategory/AddCategory" class="btn btn-success">Yeni Kategori</a>
 </div>
 <br />
+<script>
+    function btnDeleteClick(id) {
+        swal({
+            title: "Emin misin?",
+            text: "Kategorinin durumunu değiştirilmek üzere!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    let newId = "deleteCategory/" + id;
+                    document.getElementById(newId).click();
+                }
+            });
+    }
+</script>

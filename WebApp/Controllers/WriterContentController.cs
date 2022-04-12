@@ -61,7 +61,7 @@ namespace WebApp.Controllers
             {
                 _contentService.Add(content);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)

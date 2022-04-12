@@ -64,7 +64,7 @@ namespace WebApp.Controllers
 
                 _writerService.Add(writer);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -88,7 +88,7 @@ namespace WebApp.Controllers
 
             _adminService.Add(admin);
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -133,7 +133,7 @@ namespace WebApp.Controllers
 
                 _writerService.Update(writer);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)

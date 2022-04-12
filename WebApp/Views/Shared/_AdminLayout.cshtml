@@ -42,7 +42,7 @@ to get the desired effect
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="MVC Demo Admin Paneli" class="brand-image img-circle elevation-3"
+                <img src="~/Content/img/logo.png" alt="MVC Demo Admin Paneli" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">MVC Admin Paneli</span>
             </a>
@@ -51,7 +51,7 @@ to get the desired effect
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="~/Images/profiles/default.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">@Session["AdminFirstName"] @Session["AdminLastName"]</a>
@@ -62,12 +62,12 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        @if (User.IsInRole("A"))
+                        @if (true)//User.IsInRole("A"))
                         {
                             <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminCategory")) {
                                 Write("menu-open");
                         }}">
-                                <a href="/AdminCategory" class="nav-link">
+                                <a href="/AdminCategory/Index" class="nav-link">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Kategoriler
@@ -78,7 +78,7 @@ to get the desired effect
                         <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminHeading") && !HttpContext.Current.Request.Path.Contains("HeadingReport")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminHeading" class="nav-link">
+                            <a href="/AdminHeading/Index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Başlıklar
@@ -88,7 +88,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminWriter")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminWriter" class="nav-link">
+                            <a href="/AdminWriter/Index" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Yazarlar
@@ -107,7 +107,7 @@ to get the desired effect
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/Chart" class="nav-link">
+                                    <a href="/Chart/Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Grafik 1</p>
                                     </a>
@@ -129,7 +129,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminAbout")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminAbout" class="nav-link">
+                            <a href="/AdminAbout/Index" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
                                     Hakkımızda
@@ -149,7 +149,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminContact")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminContact" class="nav-link">
+                            <a href="/AdminContact/Index" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     İletişim
@@ -169,7 +169,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("AdminContent")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminContent" class="nav-link">
+                            <a href="/AdminContent/Index" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Yazılar
@@ -179,7 +179,7 @@ to get the desired effect
                         <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("Auth")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/Auth" class="nav-link">
+                            <a href="/Auth/Index" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     Yetkilendirmeler
@@ -189,7 +189,7 @@ to get the desired effect
                         <li class="nav-item @{if (HttpContext.Current.Request.Path.Contains("AdminGallery")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/AdminGallery" class="nav-link">
+                            <a href="/AdminGallery/Index" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -197,7 +197,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="/ErrorPage/Page404" class="nav-link">
+                            <a href="/AdminErrorPage/Page404" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Hata Sayfaları

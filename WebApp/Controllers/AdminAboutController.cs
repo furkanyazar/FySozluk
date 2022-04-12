@@ -58,7 +58,7 @@ namespace WebApp.Controllers
 
                 _aboutService.Update(about);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)

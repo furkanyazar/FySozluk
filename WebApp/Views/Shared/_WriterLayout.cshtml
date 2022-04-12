@@ -48,7 +48,7 @@ to get the desired effect
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="MVC Demo Yazar Paneli" class="brand-image img-circle elevation-3"
+                <img src="~/Content/img/logo.png" alt="MVC Demo Yazar Paneli" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">MVC Yazar Paneli</span>
             </a>
@@ -78,7 +78,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterPanel")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/WriterPanel" class="nav-link">
+                            <a href="/WriterPanel/Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Profilim
@@ -117,7 +117,7 @@ to get the desired effect
                         <li class="nav-item has-treeview @{if (HttpContext.Current.Request.Path.Contains("WriterContent")) {
                                 Write("menu-open");
                         }}">
-                            <a href="/WriterContent" class="nav-link">
+                            <a href="/WriterContent/Index" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Yazılarım

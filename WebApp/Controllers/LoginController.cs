@@ -46,10 +46,10 @@ namespace WebApp.Controllers
                 Session["WriterLastName"] = user.WriterLastName;
                 Session["WriterImageUrl"] = user.WriterImageUrl;
 
-                return RedirectToAction("", "WriterPanel");
+                return RedirectToAction("Index", "WriterPanel");
             }
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -69,7 +69,7 @@ namespace WebApp.Controllers
 
                 _writerService.Add(writer);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -105,7 +105,7 @@ namespace WebApp.Controllers
                 Session["AdminFirstName"] = user.AdminFirstName;
                 Session["AdminLastName"] = user.AdminLastName;
 
-                return RedirectToAction("", "AdminContent");
+                return RedirectToAction("Index", "AdminContent");
             }
 
             return RedirectToAction("Admin");

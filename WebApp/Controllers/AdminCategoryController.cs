@@ -16,7 +16,7 @@ namespace WebApp.Controllers
         private ValidationResult _validation;
 
         // GET: AdminCategory
-        [Authorize(Roles = "A")]
+        //[Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var result = _categoryService.GetAll();
@@ -39,7 +39,7 @@ namespace WebApp.Controllers
             {
                 _categoryService.Add(category);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -67,7 +67,7 @@ namespace WebApp.Controllers
             {
                 _categoryService.Update(category);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -85,7 +85,7 @@ namespace WebApp.Controllers
 
             _categoryService.Update(result);
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
     }
 }

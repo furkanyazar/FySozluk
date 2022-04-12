@@ -41,7 +41,7 @@ namespace WebApp.Controllers
 
             _adminService.Update(admin);
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteAdmin(int id)
@@ -51,7 +51,7 @@ namespace WebApp.Controllers
 
             _adminService.Update(result);
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
     }
 }

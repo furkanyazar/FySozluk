@@ -64,7 +64,7 @@ namespace WebApp.Controllers
             {
                 _headingService.Add(heading);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -103,7 +103,7 @@ namespace WebApp.Controllers
             {
                 _headingService.Update(heading);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)
@@ -120,7 +120,7 @@ namespace WebApp.Controllers
             result.HeadingStatus = result.HeadingStatus ? false : true;
             _headingService.Update(result);
 
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
 
         public ActionResult HeadingsByCategory(int id)

@@ -62,7 +62,7 @@ namespace WebApp.Controllers
 
                 _writerService.Update(writer);
 
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
 
             foreach (var item in _validation.Errors)

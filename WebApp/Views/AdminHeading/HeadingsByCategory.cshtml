@@ -2,7 +2,7 @@
 @model List<Heading>
 
 @{
-    ViewBag.Title = "HeadingsByCategory";
+    ViewBag.Title = Model[0].Category.CategoryName;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 

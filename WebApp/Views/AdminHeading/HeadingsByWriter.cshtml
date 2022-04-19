@@ -2,7 +2,7 @@
 @model List<Heading>
 
 @{
-    ViewBag.Title = "HeadingsByWriter";
+    ViewBag.Title = Model[0].Writer.WriterFirstName + " " + Model[0].Writer.WriterLastName;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 

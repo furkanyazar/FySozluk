@@ -1,7 +1,7 @@
 using Entities.Concrete;
 using System.Data.Entity;
 
-namespace WebApp.Models
+namespace DataAccess.Concrete
 {
     public partial class MvcDemoDbContext : DbContext
     {
